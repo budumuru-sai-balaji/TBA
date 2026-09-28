@@ -6,19 +6,31 @@
     <title>Sai Balaji Budumuru | Technical Business Analyst</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #09090b;
+            background-color: #070709;
             color: #f4f4f5;
             overflow-x: hidden;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Subtle Architectural Blueprint Grid */
+        .bg-grid {
+            background-size: 42px 42px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         }
 
         /* Glassmorphism & Mouse Tracking Glow */
         .glass-card {
             position: relative;
-            background: rgba(24, 24, 27, 0.6);
+            background: rgba(20, 20, 24, 0.72);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             overflow: hidden;
@@ -29,8 +41,8 @@
             position: absolute;
             inset: 0;
             background: radial-gradient(
-                600px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-                rgba(20, 184, 166, 0.12),
+                650px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+                rgba(20, 184, 166, 0.13),
                 transparent 40%
             );
             pointer-events: none;
@@ -45,8 +57,8 @@
         /* Navigation Links */
         .nav-link-active {
             color: #2dd4bf;
-            background: rgba(45, 212, 191, 0.1);
-            border: 1px solid rgba(45, 212, 191, 0.3);
+            background: rgba(45, 212, 191, 0.12);
+            border: 1px solid rgba(45, 212, 191, 0.35);
         }
 
         .nav-link-inactive {
@@ -62,8 +74,8 @@
         /* Scroll Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(28px);
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(24px);
+            transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .reveal.active {
@@ -72,22 +84,22 @@
         }
     </style>
 </head>
-<body class="selection:bg-teal-500/30 selection:text-teal-200">
+<body class="bg-grid selection:bg-teal-500/30 selection:text-teal-200">
 
     <!-- Ambient Background Glows -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-600/15 blur-[140px] rounded-full"></div>
-        <div class="absolute top-[40%] right-[-10%] w-[450px] h-[450px] bg-cyan-600/15 blur-[140px] rounded-full"></div>
-        <div class="absolute bottom-[10%] left-[20%] w-[400px] h-[400px] bg-indigo-600/10 blur-[140px] rounded-full"></div>
+        <div class="absolute top-[-8%] left-[-5%] w-[600px] h-[600px] bg-teal-600/15 blur-[150px] rounded-full"></div>
+        <div class="absolute top-[15%] right-[-5%] w-[550px] h-[550px] bg-cyan-600/15 blur-[150px] rounded-full"></div>
+        <div class="absolute bottom-[5%] left-[25%] w-[500px] h-[500px] bg-indigo-600/10 blur-[150px] rounded-full"></div>
     </div>
 
     <!-- Navbar -->
     <header id="navbar" class="fixed top-0 left-0 right-0 z-50 py-6 transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div id="nav-container" class="flex items-center justify-between transition-all duration-300">
                 <a href="#home" class="text-xl font-black tracking-tight text-white flex items-center gap-2">
                     <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-sm font-black text-black">SB</span>
-                    <span>Sai Balaji<span class="text-teal-400"></span></span>
+                    <span>Sai Balaji</span>
                 </a>
 
                 <nav class="hidden md:flex items-center gap-2">
@@ -105,282 +117,402 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative z-10 min-h-screen flex items-center pt-28 pb-20">
-        <div class="max-w-6xl mx-auto px-6 w-full">
-            <div class="max-w-4xl reveal active">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-300 text-xs font-semibold mb-6">
-                    <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
-                    <span>Software Engineer &amp; Developer &rarr; Dedicated Technical Business Analyst</span>
+    <!-- Hero Section (Full 12-Column Widescreen Layout) -->
+    <section id="home" class="relative z-10 min-h-screen flex items-center pt-24 pb-16">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 w-full">
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center reveal active">
+                
+                <!-- Left Column: Pitch, CTAs & Metrics (7 Cols) -->
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/25 text-teal-300 text-xs font-semibold mb-6">
+                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Software Engineer &amp; Developer &rarr; Dedicated Technical Business Analyst</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl xl:text-[64px] font-black tracking-tight text-white leading-[1.06] mb-6">
+                        Engineered in Code.<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-indigo-400">Built for Technical Business Analysis.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-zinc-300 leading-relaxed mb-8">
+                        I’m <strong class="text-white">Sai Balaji Budumuru</strong>. Across <strong class="text-white">2.6 years as a Software Engineer and Software Developer</strong> delivering compliance-critical aviation safety SaaS and real-time monitoring systems, my strongest impact came from the <strong class="text-teal-400">Technical Business Analyst</strong> work I owned—requirements elicitation, workflow mapping, relational data modeling, SQL validation, and pushing back on risky client enhancements. Now, I bring that technical rigor full-time into TBA roles.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-3.5 mb-10">
+                        <a href="#projects" class="px-6 py-3.5 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-black font-extrabold text-sm flex items-center gap-2 shadow-[0_0_25px_rgba(20,184,166,0.35)] hover:shadow-[0_0_35px_rgba(20,184,166,0.65)] transition-all hover:-translate-y-0.5">
+                            <span>Explore BA Case Studies</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="mailto:budumurusaibalaji13@gmail.com" class="px-5 py-3.5 rounded-full bg-white/5 border border-white/15 hover:border-teal-400/50 text-white font-semibold text-sm flex items-center gap-2 transition-all">
+                            <i data-lucide="mail" class="w-4 h-4 text-teal-400"></i>
+                            <span>budumurusaibalaji13@gmail.com</span>
+                        </a>
+                        <a href="tel:+916304084803" class="px-5 py-3.5 rounded-full bg-white/5 border border-white/10 text-zinc-300 hover:text-white text-sm font-medium flex items-center gap-2 transition-all">
+                            <i data-lucide="phone" class="w-4 h-4 text-cyan-400"></i>
+                            <span>+91 6304084803</span>
+                        </a>
+                    </div>
+
+                    <!-- 4 Impact Counters -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                        <div class="glass-card p-4 rounded-2xl border border-white/10">
+                            <div class="text-2xl sm:text-3xl font-black text-teal-400 mb-0.5">2.6+</div>
+                            <p class="text-xs text-zinc-400 font-medium">Years in Dev + TBA Delivery</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl border border-white/10">
+                            <div class="text-2xl sm:text-3xl font-black text-cyan-400 mb-0.5 counter" data-target="25" data-suffix="%">0%</div>
+                            <p class="text-xs text-zinc-400 font-medium">Defect Reduction via RCA</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl border border-white/10">
+                            <div class="text-2xl sm:text-3xl font-black text-indigo-400 mb-0.5 counter" data-target="14" data-suffix="+">0+</div>
+                            <p class="text-xs text-zinc-400 font-medium">Credit Rules Specified</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl border border-white/10">
+                            <div class="text-2xl sm:text-3xl font-black text-rose-400 mb-0.5 counter" data-target="25" data-suffix="%">0%</div>
+                            <p class="text-xs text-zinc-400 font-medium">SQL Performance Gain</p>
+                        </div>
+                    </div>
                 </div>
 
-                <h1 class="text-5xl sm:text-7xl font-black tracking-tight text-white leading-[1.08] mb-6">
-                    Engineered in Code. <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-indigo-400">Built for Technical Business Analysis.</span>
-                </h1>
+                <!-- Right Column: Interactive TBA Specification & Evolution Blueprint (5 Cols) -->
+                <div class="lg:col-span-5">
+                    <div class="glass-card rounded-3xl border border-teal-500/30 p-6 shadow-2xl shadow-teal-950/30">
+                        <!-- Window Top Bar -->
+                        <div class="flex items-center justify-between pb-4 mb-5 border-b border-white/10">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                                <span class="ml-2 text-xs font-mono text-zinc-400">tba-profile-spec.v2.6</span>
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded-md bg-teal-500/15 border border-teal-500/30 text-[11px] font-mono text-teal-300">
+                                STATUS: READY_FOR_TBA
+                            </span>
+                        </div>
 
-                <p class="text-lg sm:text-xl text-zinc-400 leading-relaxed max-w-3xl mb-10">
-                    I’m <strong class="text-white">Sai Balaji Budumuru</strong>. Over the past <strong class="text-white">2.6 years as a Software Engineer and Software Developer</strong> on regulated B2B SaaS and monitoring platforms, my highest impact came from the <strong class="text-teal-400">Technical Business Analyst</strong> work I owned alongside development—driving requirements elicitation, workflow mapping, relational data modeling, and SQL validation, and pushing back on risky client enhancements. Now, I am channeling that foundation full-time into my TBA career.
-                </p>
+                        <!-- Block 1: Role Progression Pipeline -->
+                        <div class="mb-5">
+                            <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-3 flex items-center justify-between">
+                                <span>Career Evolution Pipeline</span>
+                                <span class="text-teal-400 font-mono text-[11px]">BGV-Verified Titles</span>
+                            </div>
+                            <div class="space-y-2.5">
+                                <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                                    <div>
+                                        <div class="text-xs text-zinc-400">Sep 2023 &ndash; Oct 2024 &bull; Areca Embedded</div>
+                                        <div class="text-sm font-bold text-white">Software Developer <span class="text-cyan-400 font-normal text-xs">(+ Client BA Scope)</span></div>
+                                    </div>
+                                    <span class="text-[11px] font-mono px-2 py-1 rounded bg-cyan-500/10 text-cyan-300">Elicitation + SQL</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-white/5 border border-teal-500/30 flex items-center justify-between">
+                                    <div>
+                                        <div class="text-xs text-zinc-400">Mar 2025 &ndash; Aug 2026 &bull; Prospecta Tech</div>
+                                        <div class="text-sm font-bold text-white">Software Engineer <span class="text-teal-400 font-normal text-xs">(TBA Function)</span></div>
+                                    </div>
+                                    <span class="text-[11px] font-mono px-2 py-1 rounded bg-teal-500/15 text-teal-300">HIRA &bull; RBAC &bull; RCA</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-gradient-to-r from-teal-500/20 to-cyan-500/10 border border-teal-400/50 flex items-center justify-between">
+                                    <div>
+                                        <div class="text-xs text-teal-300 font-semibold">Current Target &bull; Immediate Joiner</div>
+                                        <div class="text-sm font-black text-white">Dedicated Technical Business Analyst</div>
+                                    </div>
+                                    <i data-lucide="Flame" class="w-4 h-4 text-teal-300"></i>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="flex flex-wrap items-center gap-4 mb-16">
-                    <a href="#projects" class="px-7 py-4 rounded-full bg-gradient-to-r from-teal-500 to-cyan-600 text-black font-extrabold text-sm flex items-center gap-2 shadow-[0_0_25px_rgba(20,184,166,0.4)] hover:shadow-[0_0_40px_rgba(20,184,166,0.7)] transition-all hover:-translate-y-0.5">
-                        <span>Explore My BA Case Studies</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                    <a href="mailto:budumurusaibalaji13@gmail.com" class="px-7 py-4 rounded-full bg-white/5 border border-white/15 hover:border-teal-400/50 text-white font-semibold text-sm flex items-center gap-2 transition-all">
-                        <i data-lucide="mail" class="w-4 h-4 text-teal-400"></i>
-                        <span>budumurusaibalaji13@gmail.com</span>
-                    </a>
-                    <a href="tel:+916304084803" class="px-5 py-4 rounded-full bg-white/5 border border-white/10 text-zinc-300 hover:text-white text-sm font-medium flex items-center gap-2 transition-all">
-                        <i data-lucide="phone" class="w-4 h-4 text-cyan-400"></i>
-                        <span>+91 6304084803</span>
-                    </a>
+                        <!-- Block 2: Live Sample Spec (Northstar Decision Rules) -->
+                        <div class="p-4 rounded-2xl bg-black/50 border border-white/10 mb-5">
+                            <div class="flex items-center justify-between mb-2.5">
+                                <span class="text-xs font-bold text-cyan-300 flex items-center gap-1.5">
+                                    <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                                    Sample Decision Logic (Northstar LOS)
+                                </span>
+                                <span class="text-[11px] font-mono text-zinc-400">14+ Rules &bull; 10 States</span>
+                            </div>
+                            <div class="space-y-1.5 font-mono text-xs">
+                                <div class="flex justify-between py-1 px-2 rounded bg-white/5 text-zinc-300">
+                                    <span>IF Amount &le; 5,00,000 &amp; Score_Pass</span>
+                                    <span class="text-emerald-400 font-semibold">&rarr; AUTO_APPROVE</span>
+                                </div>
+                                <div class="flex justify-between py-1 px-2 rounded bg-white/5 text-zinc-300">
+                                    <span>IF Amount &gt; 20,00,000</span>
+                                    <span class="text-amber-400 font-semibold">&rarr; L2_SOD_ESCALATE</span>
+                                </div>
+                                <div class="flex justify-between py-1 px-2 rounded bg-white/5 text-zinc-300">
+                                    <span>AUDIT_EVENT_SCHEMA</span>
+                                    <span class="text-teal-300 font-semibold">&rarr; UTC + Actor + Diff</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 3: Core TBA Deliverables Tags -->
+                        <div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2.5">Core TBA Deliverables Owned</div>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-200">Requirements Elicitation</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-200">BPMN 2.0 Workflows</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-200">Decision Tables</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-200">Relational Data Models</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-200">RBAC &amp; SoD Matrices</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-200">Scope Impact Memos</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Impact Counters -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="glass-card p-5 rounded-2xl border border-white/10">
-                        <div class="text-3xl font-black text-teal-400 mb-1">2.6+</div>
-                        <p class="text-xs text-zinc-400 font-medium">Years in Dev + Requirement Analysis</p>
-                    </div>
-                    <div class="glass-card p-5 rounded-2xl border border-white/10">
-                        <div class="text-3xl font-black text-cyan-400 mb-1 counter" data-target="25" data-suffix="%">0%</div>
-                        <p class="text-xs text-zinc-400 font-medium">Defect Reduction via Structured RCA</p>
-                    </div>
-                    <div class="glass-card p-5 rounded-2xl border border-white/10">
-                        <div class="text-3xl font-black text-indigo-400 mb-1 counter" data-target="14" data-suffix="+">0+</div>
-                        <p class="text-xs text-zinc-400 font-medium">Lending Business Rules Specified</p>
-                    </div>
-                    <div class="glass-card p-5 rounded-2xl border border-white/10">
-                        <div class="text-3xl font-black text-rose-400 mb-1 counter" data-target="25" data-suffix="%">0%</div>
-                        <p class="text-xs text-zinc-400 font-medium">SQL Query &amp; Stored Proc Gain</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Evolution / Why TBA Section -->
-    <section id="about" class="relative z-10 py-24 border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="reveal mb-14">
-                <span class="text-xs font-bold uppercase tracking-widest text-teal-400">The Career Evolution</span>
-                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">From Writing Code to Owning the Specification</h2>
-                <p class="text-zinc-400 max-w-3xl mt-4">
-                    In my roles as a <strong class="text-white">Software Developer</strong> and <strong class="text-white">Software Engineer</strong>, I didn't just wait for tickets. I stepped into the analysis gap—working directly with clients, BAs, and Product Owners to clarify ambiguous requirements, model databases, design approval workflows, and validate edge cases before implementation. That hands-on hybrid experience is why I am pursuing <strong class="text-teal-400">Technical Business Analysis</strong> full-time.
-                </p>
+    <!-- Why TBA / Evolution Section -->
+    <section id="about" class="relative z-10 py-20 border-t border-white/10">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-8 items-end mb-12 reveal">
+                <div class="lg:col-span-7">
+                    <span class="text-xs font-bold uppercase tracking-widest text-teal-400">The Developer-to-TBA Advantage</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">From Writing Code to Owning the Specification</h2>
+                </div>
+                <div class="lg:col-span-5">
+                    <p class="text-zinc-400 text-sm sm:text-base">
+                        While employed as a <strong class="text-white">Software Developer</strong> and <strong class="text-white">Software Engineer</strong>, I consistently stepped upstream into Business Analysis—working with Product Owners and clients to resolve ambiguities before development began.
+                    </p>
+                </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 reveal">
-                <div class="glass-card p-7 rounded-2xl border border-white/10 hover:border-teal-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 mb-5">
-                        <i data-lucide="search-check"></i>
+                <div class="glass-card p-7 rounded-3xl border border-white/10 hover:border-teal-500/40 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 mb-5">
+                        <i data-lucide="file-search"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">1. Upstream Requirement Ownership</h3>
+                    <h3 class="text-xl font-bold text-white mb-2">1. Upstream Requirement Elicitation</h3>
                     <p class="text-sm text-zinc-400 leading-relaxed">
-                        While working as an engineer, I actively drove requirements elicitation, resolved specification ambiguities with POs and clients, and secured stakeholder sign-off before code was written.
+                        Rather than waiting for finalized tickets, I drove requirements elicitation with BAs, POs, and external clients—translating business goals into unambiguous acceptance criteria, state transitions, and workflow maps.
                     </p>
                 </div>
 
-                <div class="glass-card p-7 rounded-2xl border border-teal-500/30 bg-teal-950/10 hover:border-teal-400/60 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-5">
-                        <i data-lucide="database-zap"></i>
+                <div class="glass-card p-7 rounded-3xl border border-teal-500/30 bg-teal-950/10 hover:border-teal-400/60 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-5">
+                        <i data-lucide="database"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">2. Technical Feasibility By Default</h3>
+                    <h3 class="text-xl font-bold text-white mb-2">2. Engineering-Grade Feasibility</h3>
                     <p class="text-sm text-zinc-400 leading-relaxed">
-                        Because I have built production systems using <strong class="text-zinc-200">SQL Server, REST APIs, and .NET/C#</strong>, my functional specs, relational data models, and state transitions are immediately actionable for engineering teams.
+                        My hands-on background in <strong class="text-zinc-200">SQL Server, Relational Data Modeling, REST APIs, and .NET/C#</strong> means my specifications respect database normalization, indexing, and API constraints from day one.
                     </p>
                 </div>
 
-                <div class="glass-card p-7 rounded-2xl border border-white/10 hover:border-indigo-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-5">
-                        <i data-lucide="shield-alert"></i>
+                <div class="glass-card p-7 rounded-3xl border border-white/10 hover:border-indigo-500/40 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-5">
+                        <i data-lucide="shield-check"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">3. Compliance &amp; Scope Pushback</h3>
+                    <h3 class="text-xl font-bold text-white mb-2">3. Compliance &amp; Scope Defense</h3>
                     <p class="text-sm text-zinc-400 leading-relaxed">
-                        I don't just document what stakeholders ask for—I evaluate operational impact. On regulated aviation safety modules, I built impact cases to push back on risky client requests and protect safety compliance.
+                        On regulated aviation safety modules, I analyzed real-time operational scenarios to push back on risky client enhancements—building impact cases that convinced leadership to revise scope and prevent safety hazards.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section (Official Titles + Highlighted BA/TBA Work) -->
-    <section id="experience" class="relative z-10 py-24 border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="reveal mb-14">
+    <!-- Experience Section (2-Column Rich Cards so Widescreen is Utilized) -->
+    <section id="experience" class="relative z-10 py-20 border-t border-white/10">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="reveal mb-12">
                 <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">Verified Work History</span>
-                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Engineering Roles. BA &amp; TBA Impact.</h2>
-                <p class="text-zinc-400 mt-3">Officially employed as a Software Engineer and Software Developer, where I progressively took ownership of requirement analysis, workflow architecture, and stakeholder governance.</p>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Official Engineering Titles. Heavy TBA Execution.</h2>
             </div>
 
             <div class="space-y-8">
                 <!-- Role 1: Prospecta Technologies -->
-                <div class="glass-card p-8 rounded-3xl border border-teal-500/30 reveal">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10">
-                        <div>
-                            <div class="flex flex-wrap items-center gap-2 mb-2">
-                                <span class="px-3 py-1 rounded-full bg-teal-500/15 text-teal-300 text-xs font-bold">
-                                    Heavy TBA &amp; Requirement Analysis Ownership
+                <div class="glass-card p-7 sm:p-9 rounded-3xl border border-teal-500/35 reveal">
+                    <div class="grid lg:grid-cols-12 gap-8">
+                        <!-- Left 4 Cols: Role Metadata & TBA Scope Summary -->
+                        <div class="lg:col-span-4 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 pb-6 lg:pb-0 lg:pr-8">
+                            <div>
+                                <span class="inline-block px-3 py-1 rounded-full bg-teal-500/15 text-teal-300 text-xs font-bold mb-3">
+                                    Mar 2025 &ndash; Aug 2026 &bull; Visakhapatnam
                                 </span>
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-zinc-400 text-xs font-medium">
-                                    Regulated Aviation Safety SaaS
-                                </span>
+                                <h3 class="text-2xl font-black text-white">Software Engineer</h3>
+                                <p class="text-teal-400 font-semibold text-sm mt-1">Executing Technical Business Analyst Function</p>
+                                <p class="text-zinc-300 font-bold mt-2">Prospecta Technologies</p>
+                                <p class="text-xs text-zinc-400 mt-1">Domain: Regulated Aviation Safety B2B SaaS</p>
                             </div>
-                            <h3 class="text-2xl font-black text-white">Software Engineer <span class="text-teal-400 font-semibold text-base">(Executing Technical Business Analyst Functions)</span></h3>
-                            <p class="text-zinc-300 font-semibold mt-1">Prospecta Technologies &bull; Visakhapatnam</p>
+
+                            <div class="mt-6 p-4 rounded-2xl bg-white/5 border border-white/10">
+                                <div class="text-xs font-bold uppercase tracking-wider text-teal-300 mb-2">Key Modules &amp; BA Scope</div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">HIRA Risk Scoring</span>
+                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">ADP / AEP / AVP Permits</span>
+                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">Violation Tracking</span>
+                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">RBAC &amp; Audit Trails</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-sm font-semibold text-zinc-400 bg-white/5 px-4 py-2 rounded-xl border border-white/10 self-start">
-                            Mar 2025 &ndash; Aug 2026
+
+                        <!-- Right 8 Cols: Detailed Impact Bullets -->
+                        <div class="lg:col-span-8 flex items-center">
+                            <ul class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
+                                    <span><strong class="text-white">Requirements Elicitation &amp; Feasibility:</strong> Drove requirements elicitation with BAs and Product Owners; resolved specification ambiguities and validated technical feasibility before implementation.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
+                                    <span><strong class="text-white">HIRA Data Modeling &amp; Workflows:</strong> Designed relational data models and workflow logic for the HIRA module supporting risk scoring, control measures, and multi-level approval routing.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
+                                    <span><strong class="text-white">Audit Trail &amp; RBAC Architecture:</strong> Designed audit trail schemas and role-based access control across permit modules (ADP/AEP/AVP) and the Violation Tracking System for regulatory traceability.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
+                                    <span><strong class="text-white">Stakeholder Pushback &amp; Risk Prevention:</strong> Pushed back on client-requested enhancements conflicting with real-time operational scenarios; built the impact case and convinced management to revise scope, preventing safety risk.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
+                                    <span><strong class="text-white">SQL Validation &amp; Defect RCA:</strong> Optimized SQL queries and stored procedures (<strong class="text-teal-300">25% performance gain</strong>) and reduced client-reported defects by <strong class="text-teal-300">25%</strong> through structured root cause analysis.</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-
-                    <ul class="space-y-3 text-zinc-300 text-sm sm:text-base leading-relaxed">
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
-                            <span><strong class="text-white">Requirements Elicitation &amp; Feasibility:</strong> Partnered directly with BAs and Product Owners to elicit requirements, resolve specification ambiguities, and validate technical feasibility prior to sprint execution.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
-                            <span><strong class="text-white">HIRA Workflow &amp; Relational Modeling:</strong> Designed relational data models and end-to-end workflow logic for the Hazard Identification &amp; Risk Assessment (HIRA) module, covering risk scoring, control measures, and multi-level approval routing.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
-                            <span><strong class="text-white">Audit Trail &amp; RBAC Design:</strong> Specified audit trail structures and role-based access control (RBAC) across permit modules (ADP/AEP/AVP) and the Violation Tracking System to guarantee regulatory traceability.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
-                            <span><strong class="text-white">Scope Defense &amp; Risk Mitigation:</strong> Evaluated and pushed back on client-requested enhancements that conflicted with real-time operational scenarios; built the impact case and convinced management to revise scope, preventing safety risk.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
-                            <span><strong class="text-white">SQL Optimization &amp; Root Cause Analysis:</strong> Tuned SQL Server queries and stored procedures for a <strong class="text-teal-300">25% performance gain</strong>, and reduced client-reported defects by <strong class="text-teal-300">25%</strong> via structured RCA.</span>
-                        </li>
-                    </ul>
                 </div>
 
                 <!-- Role 2: Areca Embedded Systems -->
-                <div class="glass-card p-8 rounded-3xl border border-white/10 reveal">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10">
-                        <div>
-                            <div class="flex flex-wrap items-center gap-2 mb-2">
-                                <span class="px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-300 text-xs font-bold">
-                                    Direct Client Requirements &amp; Full-Lifecycle Delivery
+                <div class="glass-card p-7 sm:p-9 rounded-3xl border border-white/10 reveal">
+                    <div class="grid lg:grid-cols-12 gap-8">
+                        <!-- Left 4 Cols: Role Metadata -->
+                        <div class="lg:col-span-4 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 pb-6 lg:pb-0 lg:pr-8">
+                            <div>
+                                <span class="inline-block px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-300 text-xs font-bold mb-3">
+                                    Sep 2023 &ndash; Oct 2024 &bull; Hyderabad
                                 </span>
+                                <h3 class="text-2xl font-black text-white">Software Developer</h3>
+                                <p class="text-cyan-400 font-semibold text-sm mt-1">With Business Analysis Responsibilities</p>
+                                <p class="text-zinc-300 font-bold mt-2">Areca Embedded Systems Pvt Ltd</p>
+                                <p class="text-xs text-zinc-400 mt-1">Domain: Real-Time Monitoring &amp; Alerting Systems</p>
                             </div>
-                            <h3 class="text-2xl font-black text-white">Software Developer <span class="text-cyan-400 font-semibold text-base">(with Business Analysis Responsibilities)</span></h3>
-                            <p class="text-zinc-300 font-semibold mt-1">Areca Embedded Systems Pvt Ltd &bull; Hyderabad</p>
+
+                            <div class="mt-6 p-4 rounded-2xl bg-white/5 border border-white/10">
+                                <div class="text-xs font-bold uppercase tracking-wider text-cyan-300 mb-2">Key Deliverables Owned</div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">Client Elicitation</span>
+                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">Data Dictionaries</span>
+                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">Calculation Logic</span>
+                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">Client Sign-off Demos</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-sm font-semibold text-zinc-400 bg-white/5 px-4 py-2 rounded-xl border border-white/10 self-start">
-                            Sep 2023 &ndash; Oct 2024
+
+                        <!-- Right 8 Cols: Detailed Impact Bullets -->
+                        <div class="lg:col-span-8 flex items-center">
+                            <ul class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+                                    <span><strong class="text-white">End-to-End Requirement &amp; Delivery Ownership:</strong> Led end-to-end delivery of a water level monitoring system in a 2-person team; owned client requirements, feasibility, UI/UX, and calculation logic.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+                                    <span><strong class="text-white">Algorithmic Business Rule Design:</strong> Designed a new calculation method that reduced manual inspection effort and enabled accurate real-time alerting.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+                                    <span><strong class="text-white">Stakeholder Reviews &amp; Scope Sign-Off:</strong> Ran weekly stakeholder reviews and direct client demos; secured formal sign-off on scope and design.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+                                    <span><strong class="text-white">Relational Schemas &amp; Data Dictionaries:</strong> Designed relational database structures and data dictionaries for audit-ready reporting; optimized SQL queries and indexing to improve performance.</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-
-                    <ul class="space-y-3 text-zinc-300 text-sm sm:text-base leading-relaxed">
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
-                            <span><strong class="text-white">Client Requirements &amp; Feasibility:</strong> Led end-to-end delivery of a water level monitoring system in a 2-person team—owning client requirement gathering, feasibility assessment, UI/UX design, and core calculation logic.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
-                            <span><strong class="text-white">Business Logic Optimization:</strong> Formulated a new calculation method that reduced manual inspection effort and enabled accurate real-time alerting.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
-                            <span><strong class="text-white">Stakeholder Reviews &amp; Sign-Off:</strong> Conducted weekly stakeholder reviews and live client demos to align expectations and secure formal sign-off on scope and design.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
-                            <span><strong class="text-white">Data Modeling &amp; Audit Reporting:</strong> Designed relational database schemas and data dictionaries for audit-ready reporting, alongside SQL query and index optimization.</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- BA Case Studies / Projects Section -->
-    <section id="projects" class="relative z-10 py-24 border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="reveal mb-14">
-                <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Proof of TBA Capability</span>
+    <!-- BA Case Studies Section -->
+    <section id="projects" class="relative z-10 py-20 border-t border-white/10">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="reveal mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Functional Specifications &amp; Architecture</span>
                 <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Business Analysis Case Studies</h2>
-                <p class="text-zinc-400 mt-3">Dedicated functional specifications, decision tables, state transitions, and compliance architectures demonstrating full-time TBA readiness.</p>
             </div>
 
             <div class="grid lg:grid-cols-12 gap-8">
-                <!-- Flagship Case Study: Northstar -->
+                <!-- Northstar Case Study (7 Cols) -->
                 <div class="lg:col-span-7 glass-card p-8 rounded-3xl border border-teal-500/40 flex flex-col justify-between reveal">
                     <div>
                         <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-                            <span class="px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-bold uppercase tracking-wider">Self-Directed TBA Specification</span>
+                            <span class="px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-bold uppercase tracking-wider">Self-Directed BA Specification</span>
                             <span class="text-xs text-zinc-400 font-mono">Domain: Retail Loan Origination</span>
                         </div>
 
                         <h3 class="text-2xl sm:text-3xl font-black text-white mb-3">
                             Northstar &mdash; Digital Retail Loan Origination Workflow
                         </h3>
-                        <p class="text-zinc-400 text-sm sm:text-base mb-6">
-                            Authored a complete, production-grade Business Analysis specification for retail lending—covering staff intake, automated credit scoring, document verification, and multi-level approval routing.
+                        <p class="text-zinc-300 text-sm sm:text-base mb-6">
+                            Designed an end-to-end functional specification from staff intake through credit decisioning—covering application capture, credit scoring, document verification, and multi-level approval routing.
                         </p>
 
-                        <div class="space-y-4 mb-8">
+                        <div class="grid sm:grid-cols-2 gap-4 mb-6">
                             <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-                                <h4 class="text-sm font-bold text-teal-300 mb-1">End-to-End Workflow &amp; 10-Status State Machine</h4>
-                                <p class="text-xs sm:text-sm text-zinc-300">Designed the complete process flow from application capture through credit decisioning, governed by a strict 10-status state transition specification.</p>
+                                <h4 class="text-sm font-bold text-teal-300 mb-1">14+ Deterministic Business Rules</h4>
+                                <p class="text-xs text-zinc-300 leading-relaxed">Covered credit score bands, amount thresholds (<strong class="text-white">5L auto-approve, 20L Level 2 escalation</strong>), inclusive boundary conditions, and refer-band override routing.</p>
                             </div>
                             <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-                                <h4 class="text-sm font-bold text-cyan-300 mb-1">14+ Business Rules &amp; Decision Tables</h4>
-                                <p class="text-xs sm:text-sm text-zinc-300">Specified deterministic rules across credit score bands, loan amount thresholds (<strong class="text-white">5L auto-approve, 20L Level 2 escalation</strong>), inclusive boundary conditions, and refer-band override routing.</p>
+                                <h4 class="text-sm font-bold text-cyan-300 mb-1">4-Role RBAC &amp; 10-Status State Machine</h4>
+                                <p class="text-xs text-zinc-300 leading-relaxed">Specified a four-role access model with <strong class="text-white">Segregation of Duties (SoD)</strong> at Level 2 approval and a 10-status state transition matrix.</p>
                             </div>
-                            <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-                                <h4 class="text-sm font-bold text-indigo-300 mb-1">4-Role RBAC, Segregation of Duties &amp; Audit Schema</h4>
-                                <p class="text-xs sm:text-sm text-zinc-300">Defined a four-role access model enforcing Segregation of Duties (SoD) at Level 2 approval, paired with a regulatory audit event schema (<code class="text-teal-300">application ID, actor, role, event name, old/new values, UTC timestamp</code>).</p>
-                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-black/40 border border-white/10 mb-6">
+                            <h4 class="text-xs font-mono uppercase tracking-wider text-indigo-300 mb-1">Regulatory Audit Event Schema</h4>
+                            <p class="text-xs font-mono text-zinc-300">
+                                { application_id, actor, role, event_name, old_value, new_value, utc_timestamp }
+                            </p>
                         </div>
                     </div>
 
                     <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
-                        <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">BPMN Workflow</span>
+                        <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">Workflow Mapping</span>
                         <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">Decision Tables</span>
-                        <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">State Transitions</span>
+                        <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">State Transition Spec</span>
                         <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">Segregation of Duties</span>
-                        <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">Audit Trail Schema</span>
+                        <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">Audit Trail Design</span>
                     </div>
                 </div>
 
-                <!-- Right Column: Production BA/TBA Deliveries -->
-                <div class="lg:col-span-5 flex flex-col gap-8">
-                    <div class="glass-card p-7 rounded-3xl border border-white/10 reveal">
+                <!-- Right Column: Production Systems Analyzed (5 Cols) -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    <div class="glass-card p-7 rounded-3xl border border-white/10 flex-1 reveal">
                         <div class="flex items-center justify-between mb-3">
-                            <span class="px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-300 text-xs font-bold">Production TBA Delivery</span>
-                            <span class="text-xs text-zinc-400 font-mono">Aviation Safety</span>
+                            <span class="px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-300 text-xs font-bold">Aviation Safety Platform</span>
+                            <span class="text-xs text-zinc-400 font-mono">Prospecta Tech</span>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">HIRA, Permits (ADP/AEP/AVP) &amp; Violation Tracking</h3>
                         <p class="text-sm text-zinc-400 mb-4 leading-relaxed">
-                            Translated complex aviation compliance mandates into relational data models, risk-scoring workflows, multi-level approvals, and RBAC matrices while preventing unsafe scope changes.
+                            Owned relational data modeling, multi-level approval routing, and RBAC/audit schemas across compliance-critical airport permit and hazard modules. Authored impact memos to prevent unsafe real-time scope changes.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">Data Modeling</span>
-                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">RBAC &amp; Audit Trails</span>
-                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">Impact Cases</span>
+                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">Relational Data Modeling</span>
+                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">Multi-Level Approvals</span>
+                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">RBAC</span>
                         </div>
                     </div>
 
-                    <div class="glass-card p-7 rounded-3xl border border-white/10 reveal">
+                    <div class="glass-card p-7 rounded-3xl border border-white/10 flex-1 reveal">
                         <div class="flex items-center justify-between mb-3">
-                            <span class="px-3 py-1 rounded-full bg-indigo-500/15 text-indigo-300 text-xs font-bold">End-to-End BA + Dev Delivery</span>
-                            <span class="text-xs text-zinc-400 font-mono">Monitoring Systems</span>
+                            <span class="px-3 py-1 rounded-full bg-indigo-500/15 text-indigo-300 text-xs font-bold">IoT Alerting &amp; Reporting</span>
+                            <span class="text-xs text-zinc-400 font-mono">Areca Embedded</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Real-Time Water Level Monitoring &amp; Alerting</h3>
+                        <h3 class="text-xl font-bold text-white mb-2">Automated Water Level Monitoring System</h3>
                         <p class="text-sm text-zinc-400 mb-4 leading-relaxed">
-                            Gathered client requirements directly, designed custom calculation rules for automated alerting, created audit-ready data dictionaries, and led weekly stakeholder sign-off demos.
+                            Translated client requirements into custom alerting calculation logic, UI/UX workflows, and relational data dictionaries—securing weekly stakeholder sign-off.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">Client Elicitation</span>
+                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">Requirements Elicitation</span>
                             <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">Data Dictionaries</span>
-                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">Stakeholder Demos</span>
+                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">SQL Optimization</span>
                         </div>
                     </div>
                 </div>
@@ -388,84 +520,84 @@
         </div>
     </section>
 
-    <!-- Skills & Certifications Section -->
-    <section id="skills" class="relative z-10 py-24 border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="reveal mb-14">
-                <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Core Competencies</span>
-                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">TBA Skills Backed by Engineering Depth</h2>
+    <!-- Skills & Certifications Section (4-Column Widescreen Bento) -->
+    <section id="skills" class="relative z-10 py-20 border-t border-white/10">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="reveal mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Capabilities &amp; Credentials</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">TBA Toolkit &amp; Technical Edge</h2>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6 mb-10">
-                <!-- Category 1: BA & Analysis -->
-                <div class="glass-card p-7 rounded-3xl border border-teal-500/30 reveal">
-                    <div class="flex items-center gap-3 mb-5">
-                        <i data-lucide="compass" class="text-teal-400"></i>
-                        <h3 class="text-xl font-bold text-white">BA &amp; Requirements Analysis</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Col 1: BA & Analysis -->
+                <div class="glass-card p-6 rounded-3xl border border-teal-500/30 reveal">
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <i data-lucide="compass" class="w-5 h-5 text-teal-400"></i>
+                        <h3 class="text-lg font-bold text-white">BA &amp; Analysis</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-teal-500/50 hover:text-teal-300 transition-colors">Requirements Elicitation</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-teal-500/50 hover:text-teal-300 transition-colors">Functional Spec Interpretation</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-teal-500/50 hover:text-teal-300 transition-colors">Business Rule Definition</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-teal-500/50 hover:text-teal-300 transition-colors">Decision Table Design</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-teal-500/50 hover:text-teal-300 transition-colors">Workflow Mapping</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-teal-500/50 hover:text-teal-300 transition-colors">State Transition Design</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-teal-500/50 hover:text-teal-300 transition-colors">Acceptance Criteria</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-teal-500/50 hover:text-teal-300 transition-colors">Root Cause Analysis (RCA)</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-teal-500/50 hover:text-teal-300 transition-colors">Gap Analysis</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-teal-500/50 hover:text-teal-300 transition-colors">Stakeholder Communication</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-teal-500/50 hover:text-teal-300 transition-colors">Decision Memos</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Requirements Elicitation</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Functional Spec Interpretation</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Business Rule Definition</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Decision Table Design</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Workflow Mapping</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">State Transition Design</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Acceptance Criteria</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Root Cause Analysis</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Gap Analysis</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Decision Memos</span>
                     </div>
                 </div>
 
-                <!-- Category 2: Process & Compliance -->
-                <div class="glass-card p-7 rounded-3xl border border-cyan-500/30 reveal">
-                    <div class="flex items-center gap-3 mb-5">
-                        <i data-lucide="workflow" class="text-cyan-400"></i>
-                        <h3 class="text-xl font-bold text-white">Process &amp; Compliance</h3>
+                <!-- Col 2: Process & Compliance -->
+                <div class="glass-card p-6 rounded-3xl border border-cyan-500/30 reveal">
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <i data-lucide="workflow" class="w-5 h-5 text-cyan-400"></i>
+                        <h3 class="text-lg font-bold text-white">Process &amp; Governance</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-cyan-500/50 hover:text-cyan-300 transition-colors">BPMN (Bizagi, Lucidchart)</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-cyan-500/50 hover:text-cyan-300 transition-colors">Multi-Level Approval Workflows</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-cyan-500/50 hover:text-cyan-300 transition-colors">Segregation of Duties</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-cyan-500/50 hover:text-cyan-300 transition-colors">Audit Trail Design</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-cyan-500/50 hover:text-cyan-300 transition-colors">Role-Based Access Control</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-cyan-500/50 hover:text-cyan-300 transition-colors">SQL Validation Rules</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">BPMN (Bizagi, Lucidchart)</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Multi-Level Approval Workflows</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Segregation of Duties (SoD)</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Audit Trail Design</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Role-Based Access Control</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">SQL Validation Rules</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Stakeholder Sign-Off</span>
                     </div>
                 </div>
 
-                <!-- Category 3: Data & Technical Foundation -->
-                <div class="glass-card p-7 rounded-3xl border border-indigo-500/30 reveal">
-                    <div class="flex items-center gap-3 mb-5">
-                        <i data-lucide="database" class="text-indigo-400"></i>
-                        <h3 class="text-xl font-bold text-white">Data &amp; Engineering Foundation</h3>
+                <!-- Col 3: Data & Engineering -->
+                <div class="glass-card p-6 rounded-3xl border border-indigo-500/30 reveal">
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <i data-lucide="database" class="w-5 h-5 text-indigo-400"></i>
+                        <h3 class="text-lg font-bold text-white">Data &amp; Tech Stack</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-indigo-500/50 hover:text-indigo-300 transition-colors">SQL Server</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-indigo-500/50 hover:text-indigo-300 transition-colors">Relational Data Modeling</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-indigo-500/50 hover:text-indigo-300 transition-colors">Query Optimization</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-indigo-500/50 hover:text-indigo-300 transition-colors">REST APIs</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-indigo-500/50 hover:text-indigo-300 transition-colors">.NET / C#</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-indigo-500/50 hover:text-indigo-300 transition-colors">Jira &amp; Confluence</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-indigo-500/50 hover:text-indigo-300 transition-colors">Scrum</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-indigo-500/50 hover:text-indigo-300 transition-colors">UAT Design</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">SQL Server</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Relational Data Modeling</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Query Optimization</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">REST APIs</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">.NET / C#</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Jira &amp; Confluence</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Agile Scrum</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">UAT Design</span>
                     </div>
                 </div>
 
-                <!-- Category 4: Domain & Certifications -->
-                <div class="glass-card p-7 rounded-3xl border border-rose-500/30 reveal">
-                    <div class="flex items-center gap-3 mb-5">
-                        <i data-lucide="award" class="text-rose-400"></i>
-                        <h3 class="text-xl font-bold text-white">Domains &amp; Certifications</h3>
+                <!-- Col 4: Domains & Certifications -->
+                <div class="glass-card p-6 rounded-3xl border border-rose-500/30 reveal">
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <i data-lucide="award" class="w-5 h-5 text-rose-400"></i>
+                        <h3 class="text-lg font-bold text-white">Domains &amp; Certs</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs font-medium bg-rose-500/10 border border-rose-500/30 px-3 py-1.5 rounded-lg text-rose-300">Loan Origination</span>
-                        <span class="text-xs font-medium bg-rose-500/10 border border-rose-500/30 px-3 py-1.5 rounded-lg text-rose-300">Aviation Safety &amp; HIRA</span>
-                        <span class="text-xs font-medium bg-rose-500/10 border border-rose-500/30 px-3 py-1.5 rounded-lg text-rose-300">Permits &amp; Violation Tracking</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-rose-500/50 hover:text-rose-300 transition-colors">IIBA: Agile BA, Requirements Elicitation, BPM</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-rose-500/50 hover:text-rose-300 transition-colors">LinkedIn: User Stories, RCA, Lucidchart, Jira</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-rose-500/50 hover:text-rose-300 transition-colors">PMI: Confluence</span>
-                        <span class="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-300 hover:border-rose-500/50 hover:text-rose-300 transition-colors">HackerRank: SQL (Intermediate)</span>
+                        <span class="text-xs bg-rose-500/15 border border-rose-500/30 px-3 py-1.5 rounded-lg text-rose-300">Loan Origination</span>
+                        <span class="text-xs bg-rose-500/15 border border-rose-500/30 px-3 py-1.5 rounded-lg text-rose-300">Aviation Safety &amp; HIRA</span>
+                        <span class="text-xs bg-rose-500/15 border border-rose-500/30 px-3 py-1.5 rounded-lg text-rose-300">Permits &amp; Violation Tracking</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">IIBA: Agile BA, Elicitation, BPM</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">LinkedIn: User Stories, RCA, Jira</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">PMI: Confluence</span>
+                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">HackerRank: SQL (Intermediate)</span>
                     </div>
                 </div>
             </div>
@@ -473,24 +605,23 @@
     </section>
 
     <!-- Footer Section -->
-    <footer id="contact" class="relative z-10 bg-black/50 border-t border-white/5 pt-20 pb-10 overflow-hidden">
+    <footer id="contact" class="relative z-10 bg-black/60 border-t border-white/10 pt-20 pb-10 overflow-hidden">
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-teal-600/20 blur-[100px] z-0 rounded-full"></div>
         
         <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
-            <h2 class="text-5xl font-black text-white mb-6">Ready to collaborate?</h2>
-            <p class="text-lg text-zinc-400 max-w-2xl mx-auto mb-12">
-                Available immediately for <strong class="text-white">Technical Business Analyst</strong>, <strong class="text-white">IT Business Analyst</strong>, and <strong class="text-white">Business Analyst</strong> roles (Remote/Hybrid/On-site in Bengaluru, Hyderabad, Visakhapatnam, Chennai). Let's build something impactful.
+            <h2 class="text-4xl sm:text-5xl font-black text-white mb-6">Ready to collaborate?</h2>
+            <p class="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto mb-10">
+                Available immediately for <strong class="text-white">Technical Business Analyst</strong>, <strong class="text-white">IT Business Analyst</strong>, and <strong class="text-white">Business Analyst</strong> roles (Remote/Hybrid/On-site in Bengaluru, Hyderabad, Visakhapatnam, Chennai).
             </p>
             
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-16">
-                <a href="mailto:budumurusaibalaji13@gmail.com" class="group relative flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white rounded-full font-bold shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_40px_rgba(6,182,212,0.7)] transition-all hover:-translate-y-1 overflow-hidden w-full sm:w-auto">
-                    <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
-                    <i data-lucide="mail" class="relative z-10 group-hover:scale-110 transition-transform"></i>
-                    <span class="relative z-10">budumurusaibalaji13@gmail.com</span>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-5 mb-14">
+                <a href="mailto:budumurusaibalaji13@gmail.com" class="group relative flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-black rounded-full font-extrabold shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_40px_rgba(6,182,212,0.7)] transition-all hover:-translate-y-0.5 w-full sm:w-auto">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    <span>budumurusaibalaji13@gmail.com</span>
                 </a>
                 
-                <a href="https://linkedin.com/in/sai-balaji-budumuru" target="_blank" class="group glass-card glass-card-cyan hover:bg-white/10 flex items-center justify-center gap-3 px-8 py-4 rounded-full text-white font-bold transition-all hover:-translate-y-1 w-full sm:w-auto border border-white/20">
-                    <i data-lucide="linkedin" class="text-teal-400 group-hover:scale-110 transition-transform"></i>
+                <a href="https://linkedin.com/in/sai-balaji-budumuru" target="_blank" class="group glass-card hover:bg-white/10 flex items-center justify-center gap-3 px-8 py-4 rounded-full text-white font-bold transition-all hover:-translate-y-0.5 w-full sm:w-auto border border-white/20">
+                    <i data-lucide="linkedin" class="w-4 h-4 text-teal-400"></i>
                     <span>Connect on LinkedIn</span>
                 </a>
             </div>
@@ -498,37 +629,31 @@
             <div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8"></div>
             
             <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-zinc-500">
-                <p>B.Tech, EEE (2018-2022) | Raghu Engineering College</p>
-                <p class="flex items-center gap-1">
-                    &copy; <script>document.write(new Date().getFullYear())</script> Sai Balaji Budumuru.
-                </p>
+                <p>B.Tech, Electrical &amp; Electronics Engineering (2018&ndash;2022) | Raghu Engineering College</p>
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Sai Balaji Budumuru &bull; Visakhapatnam, India</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Navbar Scroll Effect & Active State
         const navbar = document.getElementById('navbar');
         const navContainer = document.getElementById('nav-container');
         const sections = ['home', 'about', 'experience', 'projects', 'skills'];
         const navLinks = document.querySelectorAll('.nav-link');
 
         window.addEventListener('scroll', () => {
-            // Navbar styling
-            if (window.scrollY > 50) {
-                navbar.classList.remove('py-6');
-                navbar.classList.add('py-3');
-                navContainer.classList.add('bg-zinc-900/80', 'backdrop-blur-xl', 'border', 'border-white/10', 'shadow-2xl', 'shadow-cyan-900/10', 'rounded-full', 'py-2', 'px-4', 'mt-2');
+            if (window.scrollY > 40) {
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-2');
+                navContainer.classList.add('bg-zinc-900/85', 'backdrop-blur-xl', 'border', 'border-white/10', 'shadow-2xl', 'rounded-full', 'py-2', 'px-5');
             } else {
-                navbar.classList.add('py-6');
-                navbar.classList.remove('py-3');
-                navContainer.classList.remove('bg-zinc-900/80', 'backdrop-blur-xl', 'border', 'border-white/10', 'shadow-2xl', 'shadow-cyan-900/10', 'rounded-full', 'py-2', 'px-4', 'mt-2');
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+                navContainer.classList.remove('bg-zinc-900/85', 'backdrop-blur-xl', 'border', 'border-white/10', 'shadow-2xl', 'rounded-full', 'py-2', 'px-5');
             }
 
-            // Active section spy
             let current = '';
             const scrollPosition = window.scrollY + 300;
 
@@ -549,7 +674,6 @@
             });
         });
 
-        // Mouse Tracking Glow on Glass Cards
         document.addEventListener('mousemove', (e) => {
             document.querySelectorAll('.glass-card').forEach(card => {
                 const rect = card.getBoundingClientRect();
@@ -560,26 +684,24 @@
             });
         });
 
-        // Scroll Reveal Animation Observer
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    revealObserver.unobserve(entry.target); // Trigger only once
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // Animated Number Counters Observer
         const counterObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
                     const el = entry.target;
                     const target = parseInt(el.getAttribute('data-target'));
                     const suffix = el.getAttribute('data-suffix') || '';
-                    const duration = 2000;
+                    const duration = 1800;
                     let start = null;
 
                     const step = (timestamp) => {
@@ -593,7 +715,7 @@
                         }
                     };
                     window.requestAnimationFrame(step);
-                    observer.unobserve(el); // Trigger only once
+                    observer.unobserve(el);
                 }
             });
         }, { threshold: 0.1 });
