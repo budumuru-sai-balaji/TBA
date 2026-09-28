@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" data-theme="aurora">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,32 +8,115 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* =========================================================
+           THEME 1: AURORA (Existing Multi-Color Theme - Default)
+           ========================================================= */
+        :root,
+        html[data-theme="aurora"] {
+            --bg-color: #060814;
+            --body-bg-image: 
+                radial-gradient(at 0% 0%, rgba(20, 184, 166, 0.22) 0px, transparent 45%),
+                radial-gradient(at 100% 10%, rgba(124, 58, 237, 0.24) 0px, transparent 45%),
+                radial-gradient(at 50% 45%, rgba(14, 165, 233, 0.14) 0px, transparent 50%),
+                radial-gradient(at 90% 85%, rgba(244, 63, 94, 0.16) 0px, transparent 45%);
+            --grid-line: rgba(255, 255, 255, 0.035);
+            --card-base: linear-gradient(145deg, rgba(17, 24, 39, 0.78), rgba(15, 15, 28, 0.85));
+            --card-teal: linear-gradient(145deg, rgba(13, 48, 56, 0.55), rgba(15, 23, 42, 0.82));
+            --card-violet: linear-gradient(145deg, rgba(46, 26, 71, 0.55), rgba(15, 23, 42, 0.82));
+            --card-amber: linear-gradient(145deg, rgba(62, 39, 20, 0.50), rgba(15, 23, 42, 0.82));
+            --card-rose: linear-gradient(145deg, rgba(64, 21, 42, 0.52), rgba(15, 23, 42, 0.82));
+            --mouse-glow-1: rgba(45, 212, 191, 0.16);
+            --mouse-glow-2: rgba(139, 92, 246, 0.10);
+            --nav-scroll-bg: rgba(15, 23, 42, 0.88);
+        }
+
+        /* =========================================================
+           THEME 2: DARK (Obsidian Carbon & Emerald High-Contrast)
+           ========================================================= */
+        html[data-theme="dark"] {
+            --bg-color: #040406;
+            --body-bg-image: 
+                radial-gradient(at 15% 10%, rgba(16, 185, 129, 0.10) 0px, transparent 45%),
+                radial-gradient(at 85% 85%, rgba(6, 182, 212, 0.08) 0px, transparent 45%);
+            --grid-line: rgba(255, 255, 255, 0.025);
+            --card-base: linear-gradient(145deg, rgba(14, 14, 18, 0.92), rgba(9, 9, 12, 0.96));
+            --card-teal: linear-gradient(145deg, rgba(12, 24, 24, 0.88), rgba(9, 9, 12, 0.95));
+            --card-violet: linear-gradient(145deg, rgba(18, 18, 24, 0.90), rgba(9, 9, 12, 0.95));
+            --card-amber: linear-gradient(145deg, rgba(22, 18, 14, 0.88), rgba(9, 9, 12, 0.95));
+            --card-rose: linear-gradient(145deg, rgba(24, 14, 18, 0.88), rgba(9, 9, 12, 0.95));
+            --mouse-glow-1: rgba(20, 184, 166, 0.14);
+            --mouse-glow-2: rgba(6, 182, 212, 0.06);
+            --nav-scroll-bg: rgba(9, 9, 11, 0.92);
+        }
+
+        html[data-theme="dark"] .ambient-orb {
+            opacity: 0.25;
+        }
+
+        /* =========================================================
+           THEME 3: LIGHT (Daylight Pearl & Crisp Executive Slate)
+           ========================================================= */
+        html[data-theme="light"] {
+            --bg-color: #f8fafc;
+            --body-bg-image: 
+                radial-gradient(at 0% 0%, rgba(20, 184, 166, 0.14) 0px, transparent 45%),
+                radial-gradient(at 100% 10%, rgba(124, 58, 237, 0.12) 0px, transparent 45%),
+                radial-gradient(at 50% 50%, rgba(14, 165, 233, 0.08) 0px, transparent 50%),
+                radial-gradient(at 90% 90%, rgba(244, 63, 94, 0.10) 0px, transparent 45%);
+            --grid-line: rgba(15, 23, 42, 0.045);
+            --card-base: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.95));
+            --card-teal: linear-gradient(145deg, rgba(240, 253, 250, 0.92), rgba(255, 255, 255, 0.96));
+            --card-violet: linear-gradient(145deg, rgba(245, 243, 255, 0.92), rgba(255, 255, 255, 0.96));
+            --card-amber: linear-gradient(145deg, rgba(255, 251, 235, 0.92), rgba(255, 255, 255, 0.96));
+            --card-rose: linear-gradient(145deg, rgba(255, 241, 242, 0.92), rgba(255, 255, 255, 0.96));
+            --mouse-glow-1: rgba(20, 184, 166, 0.12);
+            --mouse-glow-2: rgba(124, 58, 237, 0.08);
+            --nav-scroll-bg: rgba(255, 255, 255, 0.90);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #070709;
+            background-color: var(--bg-color);
+            background-image: var(--body-bg-image);
+            background-attachment: fixed;
             color: #f4f4f5;
             overflow-x: hidden;
+            transition: background-color 0.35s ease, color 0.35s ease;
+        }
+
+        html[data-theme="light"] body {
+            color: #0f172a;
         }
 
         .font-mono {
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Subtle Architectural Blueprint Grid */
+        /* Architectural Blueprint Grid */
         .bg-grid {
             background-size: 42px 42px;
             background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
         }
 
-        /* Glassmorphism & Mouse Tracking Glow */
+        /* Base Glassmorphism & Mouse Tracking Glow */
         .glass-card {
             position: relative;
-            background: rgba(20, 20, 24, 0.72);
+            background: var(--card-base);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             overflow: hidden;
+            transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .glass-card-teal { background: var(--card-teal); }
+        .glass-card-violet { background: var(--card-violet); }
+        .glass-card-amber { background: var(--card-amber); }
+        .glass-card-rose { background: var(--card-rose); }
+
+        html[data-theme="light"] .glass-card {
+            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
         }
 
         .glass-card::before {
@@ -42,8 +125,9 @@
             inset: 0;
             background: radial-gradient(
                 650px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-                rgba(20, 184, 166, 0.13),
-                transparent 40%
+                var(--mouse-glow-1),
+                var(--mouse-glow-2) 25%,
+                transparent 45%
             );
             pointer-events: none;
             z-index: 0;
@@ -57,18 +141,119 @@
         /* Navigation Links */
         .nav-link-active {
             color: #2dd4bf;
-            background: rgba(45, 212, 191, 0.12);
-            border: 1px solid rgba(45, 212, 191, 0.35);
+            background: linear-gradient(90deg, rgba(45, 212, 191, 0.18), rgba(139, 92, 246, 0.18));
+            border: 1px solid rgba(45, 212, 191, 0.45);
         }
 
         .nav-link-inactive {
-            color: #a1a1aa;
+            color: #cbd5e1;
             border: 1px solid transparent;
         }
 
         .nav-link-inactive:hover {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        html[data-theme="light"] .nav-link-active {
+            color: #0f766e;
+            background: linear-gradient(90deg, rgba(20, 184, 166, 0.18), rgba(139, 92, 246, 0.15));
+            border: 1px solid rgba(13, 148, 136, 0.4);
+        }
+
+        html[data-theme="light"] .nav-link-inactive {
+            color: #475569;
+        }
+
+        html[data-theme="light"] .nav-link-inactive:hover {
+            color: #0f172a;
+            background: rgba(15, 23, 42, 0.06);
+        }
+
+        /* Light Mode High-Contrast Typography & Surface Overrides */
+        html[data-theme="light"] .text-white { color: #0f172a !important; }
+        html[data-theme="light"] .text-slate-200,
+        html[data-theme="light"] .text-slate-300 { color: #334155 !important; }
+        html[data-theme="light"] .text-slate-400 { color: #64748b !important; }
+        html[data-theme="light"] .text-teal-100,
+        html[data-theme="light"] .text-teal-200,
+        html[data-theme="light"] .text-teal-300 { color: #0f766e !important; }
+        html[data-theme="light"] .text-violet-100,
+        html[data-theme="light"] .text-violet-200,
+        html[data-theme="light"] .text-violet-300 { color: #6d28d9 !important; }
+        html[data-theme="light"] .text-amber-100,
+        html[data-theme="light"] .text-amber-200,
+        html[data-theme="light"] .text-amber-300,
+        html[data-theme="light"] .text-amber-400 { color: #b45309 !important; }
+        html[data-theme="light"] .text-rose-200,
+        html[data-theme="light"] .text-rose-300,
+        html[data-theme="light"] .text-rose-400 { color: #be123c !important; }
+        html[data-theme="light"] .text-cyan-200,
+        html[data-theme="light"] .text-cyan-300 { color: #0369a1 !important; }
+        html[data-theme="light"] .text-indigo-200 { color: #4338ca !important; }
+        html[data-theme="light"] .text-emerald-400 { color: #047857 !important; }
+
+        html[data-theme="light"] .bg-slate-950\/80,
+        html[data-theme="light"] .bg-slate-950\/65,
+        html[data-theme="light"] .bg-slate-950\/60,
+        html[data-theme="light"] .bg-indigo-950\/50,
+        html[data-theme="light"] .bg-violet-950\/50,
+        html[data-theme="light"] .bg-emerald-950\/40,
+        html[data-theme="light"] .bg-amber-950\/40,
+        html[data-theme="light"] .bg-violet-950\/40 {
+            background-color: rgba(241, 245, 249, 0.9) !important;
+        }
+
+        html[data-theme="light"] .border-white\/10,
+        html[data-theme="light"] .border-white\/15 {
+            border-color: rgba(15, 23, 42, 0.12) !important;
+        }
+
+        html[data-theme="light"] #about,
+        html[data-theme="light"] #experience,
+        html[data-theme="light"] #projects,
+        html[data-theme="light"] #contact {
+            background: transparent !important;
+        }
+
+        html[data-theme="light"] .ambient-orb {
+            opacity: 0.35;
+        }
+
+        /* Theme Palette Switcher Buttons */
+        .theme-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 700;
+            transition: all 0.25s ease;
+            color: #94a3b8;
+            border: 1px solid transparent;
+        }
+
+        html[data-theme="light"] .theme-btn {
+            color: #64748b;
+        }
+
+        .theme-btn.active {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border-color: rgba(45, 212, 191, 0.45);
+            box-shadow: 0 2px 10px rgba(20, 184, 166, 0.2);
+        }
+
+        html[data-theme="light"] .theme-btn.active {
+            background: #ffffff;
+            color: #0f172a;
+            border-color: rgba(13, 148, 136, 0.45);
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+        }
+
+        .nav-scrolled {
+            background-color: var(--nav-scroll-bg) !important;
         }
 
         /* Scroll Reveal Animation */
@@ -84,178 +269,200 @@
         }
     </style>
 </head>
-<body class="bg-grid selection:bg-teal-500/30 selection:text-teal-200">
+<body class="selection:bg-violet-500/30 selection:text-teal-200">
 
-    <!-- Ambient Background Glows -->
-    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div class="absolute top-[-8%] left-[-5%] w-[600px] h-[600px] bg-teal-600/15 blur-[150px] rounded-full"></div>
-        <div class="absolute top-[15%] right-[-5%] w-[550px] h-[550px] bg-cyan-600/15 blur-[150px] rounded-full"></div>
-        <div class="absolute bottom-[5%] left-[25%] w-[500px] h-[500px] bg-indigo-600/10 blur-[150px] rounded-full"></div>
+    <!-- Multi-Color Ambient Background Glows -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-grid">
+        <div class="ambient-orb absolute top-[-10%] left-[-5%] w-[650px] h-[650px] bg-teal-500/20 blur-[150px] rounded-full transition-opacity duration-500"></div>
+        <div class="ambient-orb absolute top-[8%] right-[-8%] w-[650px] h-[650px] bg-violet-600/25 blur-[160px] rounded-full transition-opacity duration-500"></div>
+        <div class="ambient-orb absolute top-[48%] left-[30%] w-[550px] h-[550px] bg-amber-500/12 blur-[150px] rounded-full transition-opacity duration-500"></div>
+        <div class="ambient-orb absolute bottom-[-5%] right-[15%] w-[600px] h-[600px] bg-rose-600/18 blur-[160px] rounded-full transition-opacity duration-500"></div>
     </div>
 
     <!-- Navbar -->
-    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 py-6 transition-all duration-300">
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 py-5 transition-all duration-300">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div id="nav-container" class="flex items-center justify-between transition-all duration-300">
-                <a href="#home" class="text-xl font-black tracking-tight text-white flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-sm font-black text-black">SB</span>
+            <div id="nav-container" class="flex items-center justify-between gap-2 transition-all duration-300">
+                <a href="#home" class="text-xl font-black tracking-tight text-white flex items-center gap-2 shrink-0">
+                    <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-400 via-cyan-500 to-violet-600 flex items-center justify-center text-sm font-black text-black">SB</span>
                     <span>Sai Balaji</span>
                 </a>
 
-                <nav class="hidden md:flex items-center gap-2">
-                    <a href="#home" data-section="home" class="nav-link nav-link-active px-4 py-1.5 rounded-full text-sm font-medium transition-all">Home</a>
-                    <a href="#about" data-section="about" class="nav-link nav-link-inactive px-4 py-1.5 rounded-full text-sm font-medium transition-all">Why TBA</a>
-                    <a href="#experience" data-section="experience" class="nav-link nav-link-inactive px-4 py-1.5 rounded-full text-sm font-medium transition-all">Experience</a>
-                    <a href="#projects" data-section="projects" class="nav-link nav-link-inactive px-4 py-1.5 rounded-full text-sm font-medium transition-all">BA Case Studies</a>
-                    <a href="#skills" data-section="skills" class="nav-link nav-link-inactive px-4 py-1.5 rounded-full text-sm font-medium transition-all">Skills &amp; Certs</a>
+                <!-- Restored md:flex so Home and all section links show on all laptop & desktop screens -->
+                <nav class="hidden md:flex items-center gap-1 lg:gap-1.5">
+                    <a href="#home" data-section="home" class="nav-link nav-link-active px-3 lg:px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium transition-all">Home</a>
+                    <a href="#about" data-section="about" class="nav-link nav-link-inactive px-3 lg:px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium transition-all">Why TBA</a>
+                    <a href="#experience" data-section="experience" class="nav-link nav-link-inactive px-3 lg:px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium transition-all">Experience</a>
+                    <a href="#projects" data-section="projects" class="nav-link nav-link-inactive px-3 lg:px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium transition-all">BA Case Studies</a>
+                    <a href="#skills" data-section="skills" class="nav-link nav-link-inactive px-3 lg:px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium transition-all">Skills &amp; Certs</a>
                 </nav>
 
-                <a href="#contact" class="px-4 py-2 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 hover:bg-teal-500 hover:text-black text-xs font-bold uppercase tracking-wider transition-all">
-                    Available Immediately
-                </a>
+                <!-- Right Controls: 3-Theme Color Palette Bar + CTA -->
+                <div class="flex items-center gap-2.5 shrink-0">
+                    <!-- 3-Theme Palette Selector -->
+                    <div class="flex items-center gap-1 p-1 rounded-full bg-slate-900/60 border border-white/15 backdrop-blur-md" role="group" aria-label="Color Theme Palette">
+                        <button type="button" data-set-theme="aurora" class="theme-btn active" title="Aurora Multi-Color Theme">
+                            <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-teal-400 via-violet-500 to-amber-400"></span>
+                            <span>Aurora</span>
+                        </button>
+                        <button type="button" data-set-theme="light" class="theme-btn" title="Daylight Light Theme">
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-300 border border-slate-400"></span>
+                            <span>Light</span>
+                        </button>
+                        <button type="button" data-set-theme="dark" class="theme-btn" title="Obsidian Dark Theme">
+                            <span class="w-2.5 h-2.5 rounded-full bg-zinc-950 border border-teal-400"></span>
+                            <span>Dark</span>
+                        </button>
+                    </div>
+
+                    <a href="#contact" class="hidden lg:inline-flex px-3.5 py-2 rounded-full bg-gradient-to-r from-teal-500/20 to-violet-500/20 border border-teal-400/40 text-teal-300 hover:from-teal-400 hover:to-cyan-400 hover:text-black text-xs font-bold uppercase tracking-wider transition-all">
+                        Available Immediately
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section (Full 12-Column Widescreen Layout) -->
-    <section id="home" class="relative z-10 min-h-screen flex items-center pt-24 pb-16">
+    <!-- Hero Section -->
+    <section id="home" class="relative z-10 min-h-screen flex items-center pt-28 pb-16">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10 w-full">
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center reveal active">
                 
                 <!-- Left Column: Pitch, CTAs & Metrics (7 Cols) -->
                 <div class="lg:col-span-7">
-                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/25 text-teal-300 text-xs font-semibold mb-6">
-                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-teal-500/15 via-violet-500/15 to-amber-500/15 border border-teal-400/30 text-teal-300 text-xs font-semibold mb-6">
+                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
                         <span>Software Engineer &amp; Developer &rarr; Dedicated Technical Business Analyst</span>
                     </div>
 
                     <h1 class="text-4xl sm:text-6xl xl:text-[64px] font-black tracking-tight text-white leading-[1.06] mb-6">
                         Engineered in Code.<br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-indigo-400">Built for Technical Business Analysis.</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-500 to-violet-500">Built for Technical</span><br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 via-fuchsia-500 to-amber-500">Business Analysis.</span>
                     </h1>
 
-                    <p class="text-base sm:text-lg text-zinc-300 leading-relaxed mb-8">
-                        I’m <strong class="text-white">Sai Balaji Budumuru</strong>. Across <strong class="text-white">2.6 years as a Software Engineer and Software Developer</strong> delivering compliance-critical aviation safety SaaS and real-time monitoring systems, my strongest impact came from the <strong class="text-teal-400">Technical Business Analyst</strong> work I owned—requirements elicitation, workflow mapping, relational data modeling, SQL validation, and pushing back on risky client enhancements. Now, I bring that technical rigor full-time into TBA roles.
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed mb-8">
+                        I’m <strong class="text-white">Sai Balaji Budumuru</strong>. Across <strong class="text-white">2.6 years as a Software Engineer and Software Developer</strong> delivering compliance-critical aviation safety SaaS and real-time monitoring systems, my strongest impact came from the <strong class="text-teal-300">Technical Business Analyst</strong> work I owned—requirements elicitation, workflow mapping, relational data modeling, SQL validation, and pushing back on risky client enhancements. Now, I bring that technical rigor full-time into TBA roles.
                     </p>
 
                     <div class="flex flex-wrap items-center gap-3.5 mb-10">
-                        <a href="#projects" class="px-6 py-3.5 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-black font-extrabold text-sm flex items-center gap-2 shadow-[0_0_25px_rgba(20,184,166,0.35)] hover:shadow-[0_0_35px_rgba(20,184,166,0.65)] transition-all hover:-translate-y-0.5">
+                        <a href="#projects" class="px-6 py-3.5 rounded-full bg-gradient-to-r from-teal-400 via-cyan-400 to-violet-500 text-black font-extrabold text-sm flex items-center gap-2 shadow-[0_0_30px_rgba(45,212,191,0.35)] hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] transition-all hover:-translate-y-0.5">
                             <span>Explore BA Case Studies</span>
                             <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
-                        <a href="mailto:budumurusaibalaji13@gmail.com" class="px-5 py-3.5 rounded-full bg-white/5 border border-white/15 hover:border-teal-400/50 text-white font-semibold text-sm flex items-center gap-2 transition-all">
-                            <i data-lucide="mail" class="w-4 h-4 text-teal-400"></i>
+                        <a href="mailto:budumurusaibalaji13@gmail.com" class="px-5 py-3.5 rounded-full bg-violet-500/10 border border-violet-400/30 hover:border-teal-400/60 text-white font-semibold text-sm flex items-center gap-2 transition-all">
+                            <i data-lucide="mail" class="w-4 h-4 text-violet-300"></i>
                             <span>budumurusaibalaji13@gmail.com</span>
                         </a>
-                        <a href="tel:+916304084803" class="px-5 py-3.5 rounded-full bg-white/5 border border-white/10 text-zinc-300 hover:text-white text-sm font-medium flex items-center gap-2 transition-all">
-                            <i data-lucide="phone" class="w-4 h-4 text-cyan-400"></i>
+                        <a href="tel:+916304084803" class="px-5 py-3.5 rounded-full bg-amber-500/10 border border-amber-400/25 text-slate-200 hover:text-white text-sm font-medium flex items-center gap-2 transition-all">
+                            <i data-lucide="phone" class="w-4 h-4 text-amber-400"></i>
                             <span>+91 6304084803</span>
                         </a>
                     </div>
 
-                    <!-- 4 Impact Counters -->
+                    <!-- 4 Color-Coded Impact Counters -->
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-                        <div class="glass-card p-4 rounded-2xl border border-white/10">
-                            <div class="text-2xl sm:text-3xl font-black text-teal-400 mb-0.5">2.6+</div>
-                            <p class="text-xs text-zinc-400 font-medium">Years in Dev + TBA Delivery</p>
+                        <div class="glass-card glass-card-teal p-4 rounded-2xl border border-teal-500/30">
+                            <div class="text-2xl sm:text-3xl font-black text-teal-300 mb-0.5">2.6+</div>
+                            <p class="text-xs text-slate-300 font-medium">Years in Dev + TBA Delivery</p>
                         </div>
-                        <div class="glass-card p-4 rounded-2xl border border-white/10">
-                            <div class="text-2xl sm:text-3xl font-black text-cyan-400 mb-0.5 counter" data-target="25" data-suffix="%">0%</div>
-                            <p class="text-xs text-zinc-400 font-medium">Defect Reduction via RCA</p>
+                        <div class="glass-card glass-card-violet p-4 rounded-2xl border border-violet-500/30">
+                            <div class="text-2xl sm:text-3xl font-black text-violet-300 mb-0.5 counter" data-target="25" data-suffix="%">0%</div>
+                            <p class="text-xs text-slate-300 font-medium">Defect Reduction via RCA</p>
                         </div>
-                        <div class="glass-card p-4 rounded-2xl border border-white/10">
-                            <div class="text-2xl sm:text-3xl font-black text-indigo-400 mb-0.5 counter" data-target="14" data-suffix="+">0+</div>
-                            <p class="text-xs text-zinc-400 font-medium">Credit Rules Specified</p>
+                        <div class="glass-card glass-card-amber p-4 rounded-2xl border border-amber-500/30">
+                            <div class="text-2xl sm:text-3xl font-black text-amber-300 mb-0.5 counter" data-target="14" data-suffix="+">0+</div>
+                            <p class="text-xs text-slate-300 font-medium">Credit Rules Specified</p>
                         </div>
-                        <div class="glass-card p-4 rounded-2xl border border-white/10">
-                            <div class="text-2xl sm:text-3xl font-black text-rose-400 mb-0.5 counter" data-target="25" data-suffix="%">0%</div>
-                            <p class="text-xs text-zinc-400 font-medium">SQL Performance Gain</p>
+                        <div class="glass-card glass-card-rose p-4 rounded-2xl border border-rose-500/30">
+                            <div class="text-2xl sm:text-3xl font-black text-rose-300 mb-0.5 counter" data-target="25" data-suffix="%">0%</div>
+                            <p class="text-xs text-slate-300 font-medium">SQL Performance Gain</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Column: Interactive TBA Specification & Evolution Blueprint (5 Cols) -->
                 <div class="lg:col-span-5">
-                    <div class="glass-card rounded-3xl border border-teal-500/30 p-6 shadow-2xl shadow-teal-950/30">
+                    <div class="glass-card glass-card-violet rounded-3xl border border-violet-500/40 p-6 shadow-2xl shadow-violet-950/30">
                         <!-- Window Top Bar -->
                         <div class="flex items-center justify-between pb-4 mb-5 border-b border-white/10">
                             <div class="flex items-center gap-2">
-                                <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
-                                <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
-                                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
-                                <span class="ml-2 text-xs font-mono text-zinc-400">tba-profile-spec.v2.6</span>
+                                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                                <span class="ml-2 text-xs font-mono text-violet-200">tba-profile-spec.v2.6</span>
                             </div>
-                            <span class="px-2.5 py-0.5 rounded-md bg-teal-500/15 border border-teal-500/30 text-[11px] font-mono text-teal-300">
+                            <span class="px-2.5 py-0.5 rounded-md bg-gradient-to-r from-teal-500/20 to-violet-500/20 border border-teal-400/40 text-[11px] font-mono text-teal-300">
                                 STATUS: READY_FOR_TBA
                             </span>
                         </div>
 
                         <!-- Block 1: Role Progression Pipeline -->
                         <div class="mb-5">
-                            <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-3 flex items-center justify-between">
+                            <div class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3 flex items-center justify-between">
                                 <span>Career Evolution Pipeline</span>
-                                <span class="text-teal-400 font-mono text-[11px]">BGV-Verified Titles</span>
+                                <span class="text-amber-300 font-mono text-[11px]">BGV-Verified Titles</span>
                             </div>
                             <div class="space-y-2.5">
-                                <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                                <div class="p-3 rounded-xl bg-indigo-950/50 border border-indigo-400/25 flex items-center justify-between">
                                     <div>
-                                        <div class="text-xs text-zinc-400">Sep 2023 &ndash; Oct 2024 &bull; Areca Embedded</div>
-                                        <div class="text-sm font-bold text-white">Software Developer <span class="text-cyan-400 font-normal text-xs">(+ Client BA Scope)</span></div>
+                                        <div class="text-xs text-slate-400">Sep 2023 &ndash; Oct 2024 &bull; Areca Embedded</div>
+                                        <div class="text-sm font-bold text-white">Software Developer <span class="text-amber-300 font-normal text-xs">(+ Client BA Scope)</span></div>
                                     </div>
-                                    <span class="text-[11px] font-mono px-2 py-1 rounded bg-cyan-500/10 text-cyan-300">Elicitation + SQL</span>
+                                    <span class="text-[11px] font-mono px-2 py-1 rounded bg-amber-500/15 text-amber-300 border border-amber-400/30">Elicitation + SQL</span>
                                 </div>
-                                <div class="p-3 rounded-xl bg-white/5 border border-teal-500/30 flex items-center justify-between">
+                                <div class="p-3 rounded-xl bg-violet-950/50 border border-violet-400/35 flex items-center justify-between">
                                     <div>
-                                        <div class="text-xs text-zinc-400">Mar 2025 &ndash; Aug 2026 &bull; Prospecta Tech</div>
-                                        <div class="text-sm font-bold text-white">Software Engineer <span class="text-teal-400 font-normal text-xs">(TBA Function)</span></div>
+                                        <div class="text-xs text-slate-400">Mar 2025 &ndash; Aug 2026 &bull; Prospecta Tech</div>
+                                        <div class="text-sm font-bold text-white">Software Engineer <span class="text-violet-300 font-normal text-xs">(TBA Function)</span></div>
                                     </div>
-                                    <span class="text-[11px] font-mono px-2 py-1 rounded bg-teal-500/15 text-teal-300">HIRA &bull; RBAC &bull; RCA</span>
+                                    <span class="text-[11px] font-mono px-2 py-1 rounded bg-violet-500/20 text-violet-200 border border-violet-400/30">HIRA &bull; RBAC &bull; RCA</span>
                                 </div>
-                                <div class="p-3 rounded-xl bg-gradient-to-r from-teal-500/20 to-cyan-500/10 border border-teal-400/50 flex items-center justify-between">
+                                <div class="p-3 rounded-xl bg-gradient-to-r from-teal-500/25 via-cyan-500/20 to-violet-500/25 border border-teal-400/60 flex items-center justify-between">
                                     <div>
                                         <div class="text-xs text-teal-300 font-semibold">Current Target &bull; Immediate Joiner</div>
                                         <div class="text-sm font-black text-white">Dedicated Technical Business Analyst</div>
                                     </div>
-                                    <i data-lucide="Flame" class="w-4 h-4 text-teal-300"></i>
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Block 2: Live Sample Spec (Northstar Decision Rules) -->
-                        <div class="p-4 rounded-2xl bg-black/50 border border-white/10 mb-5">
+                        <div class="p-4 rounded-2xl bg-slate-950/80 border border-violet-400/25 mb-5">
                             <div class="flex items-center justify-between mb-2.5">
-                                <span class="text-xs font-bold text-cyan-300 flex items-center gap-1.5">
-                                    <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                                <span class="text-xs font-bold text-amber-300 flex items-center gap-1.5">
+                                    <i data-lucide="cpu" class="w-3.5 h-3.5 text-amber-400"></i>
                                     Sample Decision Logic (Northstar LOS)
                                 </span>
-                                <span class="text-[11px] font-mono text-zinc-400">14+ Rules &bull; 10 States</span>
+                                <span class="text-[11px] font-mono text-violet-300">14+ Rules &bull; 10 States</span>
                             </div>
                             <div class="space-y-1.5 font-mono text-xs">
-                                <div class="flex justify-between py-1 px-2 rounded bg-white/5 text-zinc-300">
+                                <div class="flex justify-between py-1.5 px-2.5 rounded bg-emerald-950/40 border border-emerald-500/20 text-slate-200">
                                     <span>IF Amount &le; 5,00,000 &amp; Score_Pass</span>
                                     <span class="text-emerald-400 font-semibold">&rarr; AUTO_APPROVE</span>
                                 </div>
-                                <div class="flex justify-between py-1 px-2 rounded bg-white/5 text-zinc-300">
+                                <div class="flex justify-between py-1.5 px-2.5 rounded bg-amber-950/40 border border-amber-500/20 text-slate-200">
                                     <span>IF Amount &gt; 20,00,000</span>
-                                    <span class="text-amber-400 font-semibold">&rarr; L2_SOD_ESCALATE</span>
+                                    <span class="text-amber-300 font-semibold">&rarr; L2_SOD_ESCALATE</span>
                                 </div>
-                                <div class="flex justify-between py-1 px-2 rounded bg-white/5 text-zinc-300">
+                                <div class="flex justify-between py-1.5 px-2.5 rounded bg-violet-950/40 border border-violet-500/20 text-slate-200">
                                     <span>AUDIT_EVENT_SCHEMA</span>
-                                    <span class="text-teal-300 font-semibold">&rarr; UTC + Actor + Diff</span>
+                                    <span class="text-violet-300 font-semibold">&rarr; UTC + Actor + Diff</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Block 3: Core TBA Deliverables Tags -->
                         <div>
-                            <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2.5">Core TBA Deliverables Owned</div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2.5">Core TBA Deliverables Owned</div>
                             <div class="flex flex-wrap gap-1.5">
-                                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-200">Requirements Elicitation</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-200">BPMN 2.0 Workflows</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-200">Decision Tables</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-200">Relational Data Models</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-200">RBAC &amp; SoD Matrices</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-200">Scope Impact Memos</span>
+                                <span class="px-2.5 py-1 rounded-md bg-teal-500/15 border border-teal-400/30 text-xs text-teal-200">Requirements Elicitation</span>
+                                <span class="px-2.5 py-1 rounded-md bg-violet-500/15 border border-violet-400/30 text-xs text-violet-200">BPMN 2.0 Workflows</span>
+                                <span class="px-2.5 py-1 rounded-md bg-amber-500/15 border border-amber-400/30 text-xs text-amber-200">Decision Tables</span>
+                                <span class="px-2.5 py-1 rounded-md bg-cyan-500/15 border border-cyan-400/30 text-xs text-cyan-200">Relational Data Models</span>
+                                <span class="px-2.5 py-1 rounded-md bg-rose-500/15 border border-rose-400/30 text-xs text-rose-200">RBAC &amp; SoD Matrices</span>
+                                <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 border border-indigo-400/30 text-xs text-indigo-200">Scope Impact Memos</span>
                             </div>
                         </div>
                     </div>
@@ -266,47 +473,47 @@
     </section>
 
     <!-- Why TBA / Evolution Section -->
-    <section id="about" class="relative z-10 py-20 border-t border-white/10">
+    <section id="about" class="relative z-10 py-20 border-t border-violet-500/20 bg-gradient-to-b from-indigo-950/35 via-violet-950/20 to-transparent">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div class="grid lg:grid-cols-12 gap-8 items-end mb-12 reveal">
                 <div class="lg:col-span-7">
-                    <span class="text-xs font-bold uppercase tracking-widest text-teal-400">The Developer-to-TBA Advantage</span>
-                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">From Writing Code to Owning the Specification</h2>
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-400">The Developer-to-TBA Advantage</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">From Writing Code to <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-violet-500">Owning the Specification</span></h2>
                 </div>
                 <div class="lg:col-span-5">
-                    <p class="text-zinc-400 text-sm sm:text-base">
+                    <p class="text-slate-300 text-sm sm:text-base">
                         While employed as a <strong class="text-white">Software Developer</strong> and <strong class="text-white">Software Engineer</strong>, I consistently stepped upstream into Business Analysis—working with Product Owners and clients to resolve ambiguities before development began.
                     </p>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 reveal">
-                <div class="glass-card p-7 rounded-3xl border border-white/10 hover:border-teal-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 mb-5">
+                <div class="glass-card glass-card-teal p-7 rounded-3xl border border-teal-500/35 hover:border-teal-400 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-500/20 border border-teal-400/40 flex items-center justify-center text-teal-300 mb-5">
                         <i data-lucide="file-search"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">1. Upstream Requirement Elicitation</h3>
-                    <p class="text-sm text-zinc-400 leading-relaxed">
+                    <p class="text-sm text-slate-300 leading-relaxed">
                         Rather than waiting for finalized tickets, I drove requirements elicitation with BAs, POs, and external clients—translating business goals into unambiguous acceptance criteria, state transitions, and workflow maps.
                     </p>
                 </div>
 
-                <div class="glass-card p-7 rounded-3xl border border-teal-500/30 bg-teal-950/10 hover:border-teal-400/60 transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-5">
+                <div class="glass-card glass-card-violet p-7 rounded-3xl border border-violet-500/40 hover:border-violet-400 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-violet-500/20 border border-violet-400/40 flex items-center justify-center text-violet-300 mb-5">
                         <i data-lucide="database"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">2. Engineering-Grade Feasibility</h3>
-                    <p class="text-sm text-zinc-400 leading-relaxed">
-                        My hands-on background in <strong class="text-zinc-200">SQL Server, Relational Data Modeling, REST APIs, and .NET/C#</strong> means my specifications respect database normalization, indexing, and API constraints from day one.
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        My hands-on background in <strong class="text-violet-200">SQL Server, Relational Data Modeling, REST APIs, and .NET/C#</strong> means my specifications respect database normalization, indexing, and API constraints from day one.
                     </p>
                 </div>
 
-                <div class="glass-card p-7 rounded-3xl border border-white/10 hover:border-indigo-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-5">
+                <div class="glass-card glass-card-amber p-7 rounded-3xl border border-amber-500/35 hover:border-amber-400 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-300 mb-5">
                         <i data-lucide="shield-check"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">3. Compliance &amp; Scope Defense</h3>
-                    <p class="text-sm text-zinc-400 leading-relaxed">
+                    <p class="text-sm text-slate-300 leading-relaxed">
                         On regulated aviation safety modules, I analyzed real-time operational scenarios to push back on risky client enhancements—building impact cases that convinced leadership to revise scope and prevent safety hazards.
                     </p>
                 </div>
@@ -314,63 +521,61 @@
         </div>
     </section>
 
-    <!-- Experience Section (2-Column Rich Cards so Widescreen is Utilized) -->
-    <section id="experience" class="relative z-10 py-20 border-t border-white/10">
+    <!-- Experience Section -->
+    <section id="experience" class="relative z-10 py-20 border-t border-teal-500/20 bg-gradient-to-b from-teal-950/25 via-slate-950/40 to-transparent">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div class="reveal mb-12">
-                <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">Verified Work History</span>
-                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Official Engineering Titles. Heavy TBA Execution.</h2>
+                <span class="text-xs font-bold uppercase tracking-widest text-teal-300">Verified Work History</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Official Engineering Titles. <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-teal-400 to-violet-500">Heavy TBA Execution.</span></h2>
             </div>
 
             <div class="space-y-8">
                 <!-- Role 1: Prospecta Technologies -->
-                <div class="glass-card p-7 sm:p-9 rounded-3xl border border-teal-500/35 reveal">
+                <div class="glass-card glass-card-teal p-7 sm:p-9 rounded-3xl border border-teal-400/40 reveal">
                     <div class="grid lg:grid-cols-12 gap-8">
-                        <!-- Left 4 Cols: Role Metadata & TBA Scope Summary -->
                         <div class="lg:col-span-4 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 pb-6 lg:pb-0 lg:pr-8">
                             <div>
-                                <span class="inline-block px-3 py-1 rounded-full bg-teal-500/15 text-teal-300 text-xs font-bold mb-3">
+                                <span class="inline-block px-3 py-1 rounded-full bg-teal-400/20 border border-teal-400/30 text-teal-200 text-xs font-bold mb-3">
                                     Mar 2025 &ndash; Aug 2026 &bull; Visakhapatnam
                                 </span>
                                 <h3 class="text-2xl font-black text-white">Software Engineer</h3>
-                                <p class="text-teal-400 font-semibold text-sm mt-1">Executing Technical Business Analyst Function</p>
-                                <p class="text-zinc-300 font-bold mt-2">Prospecta Technologies</p>
-                                <p class="text-xs text-zinc-400 mt-1">Domain: Regulated Aviation Safety B2B SaaS</p>
+                                <p class="text-teal-300 font-semibold text-sm mt-1">Executing Technical Business Analyst Function</p>
+                                <p class="text-amber-300 font-bold mt-2">Prospecta Technologies</p>
+                                <p class="text-xs text-slate-300 mt-1">Domain: Regulated Aviation Safety B2B SaaS</p>
                             </div>
 
-                            <div class="mt-6 p-4 rounded-2xl bg-white/5 border border-white/10">
+                            <div class="mt-6 p-4 rounded-2xl bg-slate-950/60 border border-teal-400/25">
                                 <div class="text-xs font-bold uppercase tracking-wider text-teal-300 mb-2">Key Modules &amp; BA Scope</div>
                                 <div class="flex flex-wrap gap-1.5">
-                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">HIRA Risk Scoring</span>
-                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">ADP / AEP / AVP Permits</span>
-                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">Violation Tracking</span>
-                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">RBAC &amp; Audit Trails</span>
+                                    <span class="text-xs bg-teal-500/15 px-2.5 py-1 rounded text-teal-200 border border-teal-400/30">HIRA Risk Scoring</span>
+                                    <span class="text-xs bg-violet-500/15 px-2.5 py-1 rounded text-violet-200 border border-violet-400/30">ADP / AEP / AVP Permits</span>
+                                    <span class="text-xs bg-amber-500/15 px-2.5 py-1 rounded text-amber-200 border border-amber-400/30">Violation Tracking</span>
+                                    <span class="text-xs bg-rose-500/15 px-2.5 py-1 rounded text-rose-200 border border-rose-400/30">RBAC &amp; Audit Trails</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Right 8 Cols: Detailed Impact Bullets -->
                         <div class="lg:col-span-8 flex items-center">
-                            <ul class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+                            <ul class="space-y-4 text-slate-200 text-sm sm:text-base leading-relaxed">
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-300 shrink-0 mt-0.5"></i>
                                     <span><strong class="text-white">Requirements Elicitation &amp; Feasibility:</strong> Drove requirements elicitation with BAs and Product Owners; resolved specification ambiguities and validated technical feasibility before implementation.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-300 shrink-0 mt-0.5"></i>
                                     <span><strong class="text-white">HIRA Data Modeling &amp; Workflows:</strong> Designed relational data models and workflow logic for the HIRA module supporting risk scoring, control measures, and multi-level approval routing.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-300 shrink-0 mt-0.5"></i>
                                     <span><strong class="text-white">Audit Trail &amp; RBAC Architecture:</strong> Designed audit trail schemas and role-based access control across permit modules (ADP/AEP/AVP) and the Violation Tracking System for regulatory traceability.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-300 shrink-0 mt-0.5"></i>
                                     <span><strong class="text-white">Stakeholder Pushback &amp; Risk Prevention:</strong> Pushed back on client-requested enhancements conflicting with real-time operational scenarios; built the impact case and convinced management to revise scope, preventing safety risk.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
-                                    <span><strong class="text-white">SQL Validation &amp; Defect RCA:</strong> Optimized SQL queries and stored procedures (<strong class="text-teal-300">25% performance gain</strong>) and reduced client-reported defects by <strong class="text-teal-300">25%</strong> through structured root cause analysis.</span>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-300 shrink-0 mt-0.5"></i>
+                                    <span><strong class="text-white">SQL Validation &amp; Defect RCA:</strong> Optimized SQL queries and stored procedures (<strong class="text-amber-300">25% performance gain</strong>) and reduced client-reported defects by <strong class="text-amber-300">25%</strong> through structured root cause analysis.</span>
                                 </li>
                             </ul>
                         </div>
@@ -378,48 +583,46 @@
                 </div>
 
                 <!-- Role 2: Areca Embedded Systems -->
-                <div class="glass-card p-7 sm:p-9 rounded-3xl border border-white/10 reveal">
+                <div class="glass-card glass-card-violet p-7 sm:p-9 rounded-3xl border border-violet-400/40 reveal">
                     <div class="grid lg:grid-cols-12 gap-8">
-                        <!-- Left 4 Cols: Role Metadata -->
                         <div class="lg:col-span-4 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 pb-6 lg:pb-0 lg:pr-8">
                             <div>
-                                <span class="inline-block px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-300 text-xs font-bold mb-3">
+                                <span class="inline-block px-3 py-1 rounded-full bg-violet-400/20 border border-violet-400/30 text-violet-200 text-xs font-bold mb-3">
                                     Sep 2023 &ndash; Oct 2024 &bull; Hyderabad
                                 </span>
                                 <h3 class="text-2xl font-black text-white">Software Developer</h3>
-                                <p class="text-cyan-400 font-semibold text-sm mt-1">With Business Analysis Responsibilities</p>
-                                <p class="text-zinc-300 font-bold mt-2">Areca Embedded Systems Pvt Ltd</p>
-                                <p class="text-xs text-zinc-400 mt-1">Domain: Real-Time Monitoring &amp; Alerting Systems</p>
+                                <p class="text-violet-300 font-semibold text-sm mt-1">With Business Analysis Responsibilities</p>
+                                <p class="text-amber-300 font-bold mt-2">Areca Embedded Systems Pvt Ltd</p>
+                                <p class="text-xs text-slate-300 mt-1">Domain: Real-Time Monitoring &amp; Alerting Systems</p>
                             </div>
 
-                            <div class="mt-6 p-4 rounded-2xl bg-white/5 border border-white/10">
-                                <div class="text-xs font-bold uppercase tracking-wider text-cyan-300 mb-2">Key Deliverables Owned</div>
+                            <div class="mt-6 p-4 rounded-2xl bg-slate-950/60 border border-violet-400/25">
+                                <div class="text-xs font-bold uppercase tracking-wider text-violet-300 mb-2">Key Deliverables Owned</div>
                                 <div class="flex flex-wrap gap-1.5">
-                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">Client Elicitation</span>
-                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">Data Dictionaries</span>
-                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">Calculation Logic</span>
-                                    <span class="text-xs bg-black/40 px-2.5 py-1 rounded text-zinc-300 border border-white/10">Client Sign-off Demos</span>
+                                    <span class="text-xs bg-violet-500/15 px-2.5 py-1 rounded text-violet-200 border border-violet-400/30">Client Elicitation</span>
+                                    <span class="text-xs bg-teal-500/15 px-2.5 py-1 rounded text-teal-200 border border-teal-400/30">Data Dictionaries</span>
+                                    <span class="text-xs bg-amber-500/15 px-2.5 py-1 rounded text-amber-200 border border-amber-400/30">Calculation Logic</span>
+                                    <span class="text-xs bg-cyan-500/15 px-2.5 py-1 rounded text-cyan-200 border border-cyan-400/30">Client Sign-off Demos</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Right 8 Cols: Detailed Impact Bullets -->
                         <div class="lg:col-span-8 flex items-center">
-                            <ul class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+                            <ul class="space-y-4 text-slate-200 text-sm sm:text-base leading-relaxed">
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i>
                                     <span><strong class="text-white">End-to-End Requirement &amp; Delivery Ownership:</strong> Led end-to-end delivery of a water level monitoring system in a 2-person team; owned client requirements, feasibility, UI/UX, and calculation logic.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i>
                                     <span><strong class="text-white">Algorithmic Business Rule Design:</strong> Designed a new calculation method that reduced manual inspection effort and enabled accurate real-time alerting.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i>
                                     <span><strong class="text-white">Stakeholder Reviews &amp; Scope Sign-Off:</strong> Ran weekly stakeholder reviews and direct client demos; secured formal sign-off on scope and design.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i>
                                     <span><strong class="text-white">Relational Schemas &amp; Data Dictionaries:</strong> Designed relational database structures and data dictionaries for audit-ready reporting; optimized SQL queries and indexing to improve performance.</span>
                                 </li>
                             </ul>
@@ -431,88 +634,88 @@
     </section>
 
     <!-- BA Case Studies Section -->
-    <section id="projects" class="relative z-10 py-20 border-t border-white/10">
+    <section id="projects" class="relative z-10 py-20 border-t border-violet-500/20 bg-gradient-to-b from-violet-950/30 via-rose-950/15 to-transparent">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div class="reveal mb-12">
-                <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Functional Specifications &amp; Architecture</span>
-                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Business Analysis Case Studies</h2>
+                <span class="text-xs font-bold uppercase tracking-widest text-rose-400">Functional Specifications &amp; Architecture</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Business Analysis <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-violet-500 to-rose-500">Case Studies</span></h2>
             </div>
 
             <div class="grid lg:grid-cols-12 gap-8">
                 <!-- Northstar Case Study (7 Cols) -->
-                <div class="lg:col-span-7 glass-card p-8 rounded-3xl border border-teal-500/40 flex flex-col justify-between reveal">
+                <div class="lg:col-span-7 glass-card glass-card-teal p-8 rounded-3xl border border-teal-400/45 flex flex-col justify-between reveal">
                     <div>
                         <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-                            <span class="px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-bold uppercase tracking-wider">Self-Directed BA Specification</span>
-                            <span class="text-xs text-zinc-400 font-mono">Domain: Retail Loan Origination</span>
+                            <span class="px-3 py-1 rounded-full bg-gradient-to-r from-teal-500/25 to-violet-500/25 border border-teal-400/40 text-teal-200 text-xs font-bold uppercase tracking-wider">Self-Directed BA Specification</span>
+                            <span class="text-xs text-amber-300 font-mono">Domain: Retail Loan Origination</span>
                         </div>
 
                         <h3 class="text-2xl sm:text-3xl font-black text-white mb-3">
                             Northstar &mdash; Digital Retail Loan Origination Workflow
                         </h3>
-                        <p class="text-zinc-300 text-sm sm:text-base mb-6">
+                        <p class="text-slate-200 text-sm sm:text-base mb-6">
                             Designed an end-to-end functional specification from staff intake through credit decisioning—covering application capture, credit scoring, document verification, and multi-level approval routing.
                         </p>
 
                         <div class="grid sm:grid-cols-2 gap-4 mb-6">
-                            <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                            <div class="p-4 rounded-2xl bg-slate-950/65 border border-teal-400/30">
                                 <h4 class="text-sm font-bold text-teal-300 mb-1">14+ Deterministic Business Rules</h4>
-                                <p class="text-xs text-zinc-300 leading-relaxed">Covered credit score bands, amount thresholds (<strong class="text-white">5L auto-approve, 20L Level 2 escalation</strong>), inclusive boundary conditions, and refer-band override routing.</p>
+                                <p class="text-xs text-slate-300 leading-relaxed">Covered credit score bands, amount thresholds (<strong class="text-amber-300">5L auto-approve, 20L Level 2 escalation</strong>), inclusive boundary conditions, and refer-band override routing.</p>
                             </div>
-                            <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-                                <h4 class="text-sm font-bold text-cyan-300 mb-1">4-Role RBAC &amp; 10-Status State Machine</h4>
-                                <p class="text-xs text-zinc-300 leading-relaxed">Specified a four-role access model with <strong class="text-white">Segregation of Duties (SoD)</strong> at Level 2 approval and a 10-status state transition matrix.</p>
+                            <div class="p-4 rounded-2xl bg-slate-950/65 border border-violet-400/30">
+                                <h4 class="text-sm font-bold text-violet-300 mb-1">4-Role RBAC &amp; 10-Status State Machine</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed">Specified a four-role access model with <strong class="text-rose-300">Segregation of Duties (SoD)</strong> at Level 2 approval and a 10-status state transition matrix.</p>
                             </div>
                         </div>
 
-                        <div class="p-4 rounded-2xl bg-black/40 border border-white/10 mb-6">
-                            <h4 class="text-xs font-mono uppercase tracking-wider text-indigo-300 mb-1">Regulatory Audit Event Schema</h4>
-                            <p class="text-xs font-mono text-zinc-300">
+                        <div class="p-4 rounded-2xl bg-slate-950/80 border border-amber-400/30 mb-6">
+                            <h4 class="text-xs font-mono uppercase tracking-wider text-amber-300 mb-1">Regulatory Audit Event Schema</h4>
+                            <p class="text-xs font-mono text-teal-200">
                                 { application_id, actor, role, event_name, old_value, new_value, utc_timestamp }
                             </p>
                         </div>
                     </div>
 
                     <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
-                        <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">Workflow Mapping</span>
-                        <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">Decision Tables</span>
-                        <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">State Transition Spec</span>
-                        <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">Segregation of Duties</span>
-                        <span class="text-xs font-medium bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-lg text-teal-300">Audit Trail Design</span>
+                        <span class="text-xs font-medium bg-teal-500/15 border border-teal-400/35 px-3 py-1 rounded-lg text-teal-200">Workflow Mapping</span>
+                        <span class="text-xs font-medium bg-violet-500/15 border border-violet-400/35 px-3 py-1 rounded-lg text-violet-200">Decision Tables</span>
+                        <span class="text-xs font-medium bg-amber-500/15 border border-amber-400/35 px-3 py-1 rounded-lg text-amber-200">State Transition Spec</span>
+                        <span class="text-xs font-medium bg-rose-500/15 border border-rose-400/35 px-3 py-1 rounded-lg text-rose-200">Segregation of Duties</span>
+                        <span class="text-xs font-medium bg-cyan-500/15 border border-cyan-400/35 px-3 py-1 rounded-lg text-cyan-200">Audit Trail Design</span>
                     </div>
                 </div>
 
                 <!-- Right Column: Production Systems Analyzed (5 Cols) -->
                 <div class="lg:col-span-5 flex flex-col gap-6">
-                    <div class="glass-card p-7 rounded-3xl border border-white/10 flex-1 reveal">
+                    <div class="glass-card glass-card-amber p-7 rounded-3xl border border-amber-400/35 flex-1 reveal">
                         <div class="flex items-center justify-between mb-3">
-                            <span class="px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-300 text-xs font-bold">Aviation Safety Platform</span>
-                            <span class="text-xs text-zinc-400 font-mono">Prospecta Tech</span>
+                            <span class="px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-200 text-xs font-bold">Aviation Safety Platform</span>
+                            <span class="text-xs text-teal-300 font-mono">Prospecta Tech</span>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">HIRA, Permits (ADP/AEP/AVP) &amp; Violation Tracking</h3>
-                        <p class="text-sm text-zinc-400 mb-4 leading-relaxed">
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
                             Owned relational data modeling, multi-level approval routing, and RBAC/audit schemas across compliance-critical airport permit and hazard modules. Authored impact memos to prevent unsafe real-time scope changes.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">Relational Data Modeling</span>
-                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">Multi-Level Approvals</span>
-                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">RBAC</span>
+                            <span class="text-xs bg-amber-500/15 border border-amber-400/30 px-2.5 py-1 rounded-md text-amber-200">Relational Data Modeling</span>
+                            <span class="text-xs bg-teal-500/15 border border-teal-400/30 px-2.5 py-1 rounded-md text-teal-200">Multi-Level Approvals</span>
+                            <span class="text-xs bg-violet-500/15 border border-violet-400/30 px-2.5 py-1 rounded-md text-violet-200">RBAC</span>
                         </div>
                     </div>
 
-                    <div class="glass-card p-7 rounded-3xl border border-white/10 flex-1 reveal">
+                    <div class="glass-card glass-card-rose p-7 rounded-3xl border border-rose-400/35 flex-1 reveal">
                         <div class="flex items-center justify-between mb-3">
-                            <span class="px-3 py-1 rounded-full bg-indigo-500/15 text-indigo-300 text-xs font-bold">IoT Alerting &amp; Reporting</span>
-                            <span class="text-xs text-zinc-400 font-mono">Areca Embedded</span>
+                            <span class="px-3 py-1 rounded-full bg-rose-500/20 border border-rose-400/30 text-rose-200 text-xs font-bold">IoT Alerting &amp; Reporting</span>
+                            <span class="text-xs text-violet-300 font-mono">Areca Embedded</span>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">Automated Water Level Monitoring System</h3>
-                        <p class="text-sm text-zinc-400 mb-4 leading-relaxed">
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
                             Translated client requirements into custom alerting calculation logic, UI/UX workflows, and relational data dictionaries—securing weekly stakeholder sign-off.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">Requirements Elicitation</span>
-                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">Data Dictionaries</span>
-                            <span class="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-zinc-300">SQL Optimization</span>
+                            <span class="text-xs bg-rose-500/15 border border-rose-400/30 px-2.5 py-1 rounded-md text-rose-200">Requirements Elicitation</span>
+                            <span class="text-xs bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-1 rounded-md text-cyan-200">Data Dictionaries</span>
+                            <span class="text-xs bg-amber-500/15 border border-amber-400/30 px-2.5 py-1 rounded-md text-amber-200">SQL Optimization</span>
                         </div>
                     </div>
                 </div>
@@ -520,84 +723,84 @@
         </div>
     </section>
 
-    <!-- Skills & Certifications Section (4-Column Widescreen Bento) -->
+    <!-- Skills & Certifications Section -->
     <section id="skills" class="relative z-10 py-20 border-t border-white/10">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div class="reveal mb-12">
-                <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Capabilities &amp; Credentials</span>
-                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">TBA Toolkit &amp; Technical Edge</h2>
+                <span class="text-xs font-bold uppercase tracking-widest text-teal-300">Capabilities &amp; Credentials</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">TBA Toolkit &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-amber-400 to-rose-500">Technical Edge</span></h2>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Col 1: BA & Analysis -->
-                <div class="glass-card p-6 rounded-3xl border border-teal-500/30 reveal">
+                <!-- Col 1: BA & Analysis (Teal) -->
+                <div class="glass-card glass-card-teal p-6 rounded-3xl border border-teal-400/40 reveal">
                     <div class="flex items-center gap-2.5 mb-4">
-                        <i data-lucide="compass" class="w-5 h-5 text-teal-400"></i>
+                        <i data-lucide="compass" class="w-5 h-5 text-teal-300"></i>
                         <h3 class="text-lg font-bold text-white">BA &amp; Analysis</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Requirements Elicitation</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Functional Spec Interpretation</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Business Rule Definition</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Decision Table Design</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Workflow Mapping</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">State Transition Design</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Acceptance Criteria</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Root Cause Analysis</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Gap Analysis</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Decision Memos</span>
+                        <span class="text-xs bg-teal-500/15 border border-teal-400/30 px-3 py-1.5 rounded-lg text-teal-100">Requirements Elicitation</span>
+                        <span class="text-xs bg-teal-500/15 border border-teal-400/30 px-3 py-1.5 rounded-lg text-teal-100">Functional Spec Interpretation</span>
+                        <span class="text-xs bg-teal-500/15 border border-teal-400/30 px-3 py-1.5 rounded-lg text-teal-100">Business Rule Definition</span>
+                        <span class="text-xs bg-teal-500/15 border border-teal-400/30 px-3 py-1.5 rounded-lg text-teal-100">Decision Table Design</span>
+                        <span class="text-xs bg-teal-500/15 border border-teal-400/30 px-3 py-1.5 rounded-lg text-teal-100">Workflow Mapping</span>
+                        <span class="text-xs bg-teal-500/15 border border-teal-400/30 px-3 py-1.5 rounded-lg text-teal-100">State Transition Design</span>
+                        <span class="text-xs bg-teal-500/15 border border-teal-400/30 px-3 py-1.5 rounded-lg text-teal-100">Acceptance Criteria</span>
+                        <span class="text-xs bg-teal-500/15 border border-teal-400/30 px-3 py-1.5 rounded-lg text-teal-100">Root Cause Analysis</span>
+                        <span class="text-xs bg-teal-500/15 border border-teal-400/30 px-3 py-1.5 rounded-lg text-teal-100">Gap Analysis</span>
+                        <span class="text-xs bg-teal-500/15 border border-teal-400/30 px-3 py-1.5 rounded-lg text-teal-100">Decision Memos</span>
                     </div>
                 </div>
 
-                <!-- Col 2: Process & Compliance -->
-                <div class="glass-card p-6 rounded-3xl border border-cyan-500/30 reveal">
+                <!-- Col 2: Process & Compliance (Violet) -->
+                <div class="glass-card glass-card-violet p-6 rounded-3xl border border-violet-400/40 reveal">
                     <div class="flex items-center gap-2.5 mb-4">
-                        <i data-lucide="workflow" class="w-5 h-5 text-cyan-400"></i>
+                        <i data-lucide="workflow" class="w-5 h-5 text-violet-300"></i>
                         <h3 class="text-lg font-bold text-white">Process &amp; Governance</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">BPMN (Bizagi, Lucidchart)</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Multi-Level Approval Workflows</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Segregation of Duties (SoD)</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Audit Trail Design</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Role-Based Access Control</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">SQL Validation Rules</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Stakeholder Sign-Off</span>
+                        <span class="text-xs bg-violet-500/15 border border-violet-400/30 px-3 py-1.5 rounded-lg text-violet-100">BPMN (Bizagi, Lucidchart)</span>
+                        <span class="text-xs bg-violet-500/15 border border-violet-400/30 px-3 py-1.5 rounded-lg text-violet-100">Multi-Level Approval Workflows</span>
+                        <span class="text-xs bg-violet-500/15 border border-violet-400/30 px-3 py-1.5 rounded-lg text-violet-100">Segregation of Duties (SoD)</span>
+                        <span class="text-xs bg-violet-500/15 border border-violet-400/30 px-3 py-1.5 rounded-lg text-violet-100">Audit Trail Design</span>
+                        <span class="text-xs bg-violet-500/15 border border-violet-400/30 px-3 py-1.5 rounded-lg text-violet-100">Role-Based Access Control</span>
+                        <span class="text-xs bg-violet-500/15 border border-violet-400/30 px-3 py-1.5 rounded-lg text-violet-100">SQL Validation Rules</span>
+                        <span class="text-xs bg-violet-500/15 border border-violet-400/30 px-3 py-1.5 rounded-lg text-violet-100">Stakeholder Sign-Off</span>
                     </div>
                 </div>
 
-                <!-- Col 3: Data & Engineering -->
-                <div class="glass-card p-6 rounded-3xl border border-indigo-500/30 reveal">
+                <!-- Col 3: Data & Engineering (Amber) -->
+                <div class="glass-card glass-card-amber p-6 rounded-3xl border border-amber-400/40 reveal">
                     <div class="flex items-center gap-2.5 mb-4">
-                        <i data-lucide="database" class="w-5 h-5 text-indigo-400"></i>
+                        <i data-lucide="database" class="w-5 h-5 text-amber-300"></i>
                         <h3 class="text-lg font-bold text-white">Data &amp; Tech Stack</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">SQL Server</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Relational Data Modeling</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Query Optimization</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">REST APIs</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">.NET / C#</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Jira &amp; Confluence</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">Agile Scrum</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">UAT Design</span>
+                        <span class="text-xs bg-amber-500/15 border border-amber-400/30 px-3 py-1.5 rounded-lg text-amber-100">SQL Server</span>
+                        <span class="text-xs bg-amber-500/15 border border-amber-400/30 px-3 py-1.5 rounded-lg text-amber-100">Relational Data Modeling</span>
+                        <span class="text-xs bg-amber-500/15 border border-amber-400/30 px-3 py-1.5 rounded-lg text-amber-100">Query Optimization</span>
+                        <span class="text-xs bg-amber-500/15 border border-amber-400/30 px-3 py-1.5 rounded-lg text-amber-100">REST APIs</span>
+                        <span class="text-xs bg-amber-500/15 border border-amber-400/30 px-3 py-1.5 rounded-lg text-amber-100">.NET / C#</span>
+                        <span class="text-xs bg-amber-500/15 border border-amber-400/30 px-3 py-1.5 rounded-lg text-amber-100">Jira &amp; Confluence</span>
+                        <span class="text-xs bg-amber-500/15 border border-amber-400/30 px-3 py-1.5 rounded-lg text-amber-100">Agile Scrum</span>
+                        <span class="text-xs bg-amber-500/15 border border-amber-400/30 px-3 py-1.5 rounded-lg text-amber-100">UAT Design</span>
                     </div>
                 </div>
 
-                <!-- Col 4: Domains & Certifications -->
-                <div class="glass-card p-6 rounded-3xl border border-rose-500/30 reveal">
+                <!-- Col 4: Domains & Certifications (Rose) -->
+                <div class="glass-card glass-card-rose p-6 rounded-3xl border border-rose-400/40 reveal">
                     <div class="flex items-center gap-2.5 mb-4">
-                        <i data-lucide="award" class="w-5 h-5 text-rose-400"></i>
+                        <i data-lucide="award" class="w-5 h-5 text-rose-300"></i>
                         <h3 class="text-lg font-bold text-white">Domains &amp; Certs</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-rose-500/15 border border-rose-500/30 px-3 py-1.5 rounded-lg text-rose-300">Loan Origination</span>
-                        <span class="text-xs bg-rose-500/15 border border-rose-500/30 px-3 py-1.5 rounded-lg text-rose-300">Aviation Safety &amp; HIRA</span>
-                        <span class="text-xs bg-rose-500/15 border border-rose-500/30 px-3 py-1.5 rounded-lg text-rose-300">Permits &amp; Violation Tracking</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">IIBA: Agile BA, Elicitation, BPM</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">LinkedIn: User Stories, RCA, Jira</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">PMI: Confluence</span>
-                        <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-zinc-200">HackerRank: SQL (Intermediate)</span>
+                        <span class="text-xs bg-rose-500/20 border border-rose-400/40 px-3 py-1.5 rounded-lg text-rose-200 font-semibold">Loan Origination</span>
+                        <span class="text-xs bg-rose-500/20 border border-rose-400/40 px-3 py-1.5 rounded-lg text-rose-200 font-semibold">Aviation Safety &amp; HIRA</span>
+                        <span class="text-xs bg-rose-500/20 border border-rose-400/40 px-3 py-1.5 rounded-lg text-rose-200 font-semibold">Permits &amp; Violation Tracking</span>
+                        <span class="text-xs bg-white/10 border border-white/15 px-3 py-1.5 rounded-lg text-slate-200">IIBA: Agile BA, Elicitation, BPM</span>
+                        <span class="text-xs bg-white/10 border border-white/15 px-3 py-1.5 rounded-lg text-slate-200">LinkedIn: User Stories, RCA, Jira</span>
+                        <span class="text-xs bg-white/10 border border-white/15 px-3 py-1.5 rounded-lg text-slate-200">PMI: Confluence</span>
+                        <span class="text-xs bg-white/10 border border-white/15 px-3 py-1.5 rounded-lg text-slate-200">HackerRank: SQL (Intermediate)</span>
                     </div>
                 </div>
             </div>
@@ -605,30 +808,31 @@
     </section>
 
     <!-- Footer Section -->
-    <footer id="contact" class="relative z-10 bg-black/60 border-t border-white/10 pt-20 pb-10 overflow-hidden">
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-teal-600/20 blur-[100px] z-0 rounded-full"></div>
+    <footer id="contact" class="relative z-10 bg-gradient-to-t from-violet-950/50 via-slate-950/80 to-transparent border-t border-violet-500/20 pt-20 pb-10 overflow-hidden">
+        <div class="ambient-orb absolute bottom-0 left-1/3 -translate-x-1/2 w-1/2 h-40 bg-teal-500/20 blur-[110px] z-0 rounded-full"></div>
+        <div class="ambient-orb absolute bottom-0 right-1/4 w-1/2 h-40 bg-violet-600/25 blur-[110px] z-0 rounded-full"></div>
         
         <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
-            <h2 class="text-4xl sm:text-5xl font-black text-white mb-6">Ready to collaborate?</h2>
-            <p class="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto mb-10">
+            <h2 class="text-4xl sm:text-5xl font-black text-white mb-6">Ready to <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-violet-500 to-amber-400">collaborate?</span></h2>
+            <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10">
                 Available immediately for <strong class="text-white">Technical Business Analyst</strong>, <strong class="text-white">IT Business Analyst</strong>, and <strong class="text-white">Business Analyst</strong> roles (Remote/Hybrid/On-site in Bengaluru, Hyderabad, Visakhapatnam, Chennai).
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-5 mb-14">
-                <a href="mailto:budumurusaibalaji13@gmail.com" class="group relative flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-black rounded-full font-extrabold shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_40px_rgba(6,182,212,0.7)] transition-all hover:-translate-y-0.5 w-full sm:w-auto">
+                <a href="mailto:budumurusaibalaji13@gmail.com" class="group relative flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-teal-400 via-cyan-400 to-violet-500 text-black rounded-full font-extrabold shadow-[0_0_25px_rgba(45,212,191,0.4)] hover:shadow-[0_0_40px_rgba(139,92,246,0.7)] transition-all hover:-translate-y-0.5 w-full sm:w-auto">
                     <i data-lucide="mail" class="w-4 h-4"></i>
                     <span>budumurusaibalaji13@gmail.com</span>
                 </a>
                 
-                <a href="https://linkedin.com/in/sai-balaji-budumuru" target="_blank" class="group glass-card hover:bg-white/10 flex items-center justify-center gap-3 px-8 py-4 rounded-full text-white font-bold transition-all hover:-translate-y-0.5 w-full sm:w-auto border border-white/20">
-                    <i data-lucide="linkedin" class="w-4 h-4 text-teal-400"></i>
+                <a href="https://linkedin.com/in/sai-balaji-budumuru" target="_blank" class="group glass-card glass-card-violet hover:bg-white/10 flex items-center justify-center gap-3 px-8 py-4 rounded-full text-white font-bold transition-all hover:-translate-y-0.5 w-full sm:w-auto border border-violet-400/40">
+                    <i data-lucide="linkedin" class="w-4 h-4 text-teal-300"></i>
                     <span>Connect on LinkedIn</span>
                 </a>
             </div>
 
-            <div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8"></div>
+            <div class="h-px w-full bg-gradient-to-r from-transparent via-violet-400/30 to-transparent mb-8"></div>
             
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-zinc-500">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-slate-400">
                 <p>B.Tech, Electrical &amp; Electronics Engineering (2018&ndash;2022) | Raghu Engineering College</p>
                 <p>&copy; <script>document.write(new Date().getFullYear())</script> Sai Balaji Budumuru &bull; Visakhapatnam, India</p>
             </div>
@@ -638,6 +842,32 @@
     <script>
         lucide.createIcons();
 
+        // 3-Theme Color Palette Controller (Aurora | Light | Dark)
+        const htmlEl = document.documentElement;
+        const themeButtons = document.querySelectorAll('[data-set-theme]');
+
+        function applyTheme(themeName) {
+            htmlEl.setAttribute('data-theme', themeName);
+            localStorage.setItem('sb_portfolio_theme', themeName);
+            themeButtons.forEach(btn => {
+                if (btn.getAttribute('data-set-theme') === themeName) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        const savedTheme = localStorage.getItem('sb_portfolio_theme') || 'aurora';
+        applyTheme(savedTheme);
+
+        themeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyTheme(btn.getAttribute('data-set-theme'));
+            });
+        });
+
+        // Navbar Scroll Effect & Active Section Spy
         const navbar = document.getElementById('navbar');
         const navContainer = document.getElementById('nav-container');
         const sections = ['home', 'about', 'experience', 'projects', 'skills'];
@@ -645,13 +875,13 @@
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 40) {
-                navbar.classList.remove('py-4');
+                navbar.classList.remove('py-5');
                 navbar.classList.add('py-2');
-                navContainer.classList.add('bg-zinc-900/85', 'backdrop-blur-xl', 'border', 'border-white/10', 'shadow-2xl', 'rounded-full', 'py-2', 'px-5');
+                navContainer.classList.add('nav-scrolled', 'backdrop-blur-xl', 'border', 'border-violet-400/25', 'shadow-2xl', 'rounded-full', 'py-2', 'px-5');
             } else {
-                navbar.classList.add('py-4');
+                navbar.classList.add('py-5');
                 navbar.classList.remove('py-2');
-                navContainer.classList.remove('bg-zinc-900/85', 'backdrop-blur-xl', 'border', 'border-white/10', 'shadow-2xl', 'rounded-full', 'py-2', 'px-5');
+                navContainer.classList.remove('nav-scrolled', 'backdrop-blur-xl', 'border', 'border-violet-400/25', 'shadow-2xl', 'rounded-full', 'py-2', 'px-5');
             }
 
             let current = '';
@@ -674,6 +904,7 @@
             });
         });
 
+        // Mouse Tracking Glow on Glass Cards
         document.addEventListener('mousemove', (e) => {
             document.querySelectorAll('.glass-card').forEach(card => {
                 const rect = card.getBoundingClientRect();
@@ -684,6 +915,7 @@
             });
         });
 
+        // Scroll Reveal Animation
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -695,6 +927,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+        // Animated Counters
         const counterObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
